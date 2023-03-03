@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.scss";
+import MyAccount from "../myAccount/MyAccount";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       <Link path="goals" to="goals" className="cta cta__goals">
         Goals page
       </Link>
+      <MyAccount />
     </div>
   );
 }

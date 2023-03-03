@@ -1,0 +1,9 @@
+@use "../../common/common.scss" as *;
+
+.myAccount {
+  margin-top: $space25;
+  border: 1px solid black;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
