@@ -1,4 +1,5 @@
 import React from "react";
+import "./Goal.scss";
 
 function Goal({ goal }) {
   return (
