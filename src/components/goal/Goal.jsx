@@ -22,7 +22,7 @@ function Goal({ goal, onIncrement, onDecrease }) {
           +
         </button>
         <button className="score__cta score__cta--edit">***EDIT***</button>
-        <button className="score__cta score__cta--delete">***EDIT***</button>
+        <button className="score__cta score__cta--delete">***DELETE***</button>
       </div>
     </div>
   );

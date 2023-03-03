@@ -61,11 +61,12 @@ Ideally, this project should use
                 - key=uniqueId (da capire come renderlo unico se gli obiettivi li creo a mano, e non mi arrivano da un'api). L'importante è che l'id non arrivi
                 [] add goal -> update goalsListState
                 [] goal score
-                    [] report times goal was met / total times the goas is supposed to be met
+                    [x] report times goal was met / total times the goas is supposed to be met
                     [] increase score btn
-                        [] click -> increase score by 1 -> setGoalsCount(prevGoalsCount => prevGoalsCount + 1)
-                    [] decrease score btn
-                        [] click -> increase score by 1 -> setGoalsCount(prevGoalsCount => prevGoalsCount + 1)
+                        [x] click -> increase score by 1 -> setGoalsCount(prevGoalsCount => prevGoalsCount + 1)
+                        [] fix bug: on increase first click doesn't fire
+                    [x] decrease score btn
+                        [x] click -> increase score by 1 -> setGoalsCount(prevGoalsCount => prevGoalsCount + 1)
                 [] edit goal btn
                     - onclick -> open edit form popup
                 [] delete goal btn
