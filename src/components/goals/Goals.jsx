@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Goal from "../goal/Goal";
+import "./Goals.scss";
+import { Link } from "react-router-dom";
 
 function Goals() {
   const [goalsList, setGoalsList] = useState([
@@ -14,7 +16,10 @@ function Goals() {
 
   return (
     <div className="goals">
-      Goals
+      <Link path="home" to="/" className="cta cta__home">
+        Go back home
+      </Link>
+      <p>Goals</p>
       {goalsList &&
         goalsList.map((goal) => {
           return <Goal goal={goal} />;

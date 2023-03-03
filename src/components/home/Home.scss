@@ -1,4 +1,7 @@
-a {
-  display: block;
-  background-color: red;
+@use "../../common/common.scss" as *;
+
+.home {
+  &__welcomeMessage {
+    margin-bottom: rem(55px);
+  }
 }
