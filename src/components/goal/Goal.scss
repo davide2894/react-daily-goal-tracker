@@ -3,4 +3,15 @@
 .goal {
   margin: $space25 auto;
   align-self: flex-start;
+  text-align: left;
+
+  &__title {
+    margin-bottom: $space16;
+  }
+}
+
+.score {
+  &__cta {
+    margin-left: $space25;
+  }
 }

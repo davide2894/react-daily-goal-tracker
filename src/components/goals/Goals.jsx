@@ -10,9 +10,38 @@ function Goals() {
       score: {
         max: 5,
         min: 0,
+        actual: 0,
       },
     },
   ]);
+
+  function onIncrementHandler() {
+    setGoalsList((prevGoaList) =>
+      prevGoaList.map((prevGoal) => {
+        return {
+          ...prevGoal,
+          score: {
+            ...prevGoal.score,
+            actual: prevGoal.score.actual++,
+          },
+        };
+      })
+    );
+  }
+
+  function onDecreaseHandler() {
+    setGoalsList((prevGoaList) =>
+      prevGoaList.map((prevGoal) => {
+        return {
+          ...prevGoal,
+          score: {
+            ...prevGoal.score,
+            actual: prevGoal.score.actual--,
+          },
+        };
+      })
+    );
+  }
 
   return (
     <div className="goals">
@@ -21,8 +50,15 @@ function Goals() {
       </Link>
       <p>Goals</p>
       {goalsList &&
-        goalsList.map((goal) => {
-          return <Goal goal={goal} />;
+        goalsList.map((goal, idx) => {
+          return (
+            <Goal
+              key={idx}
+              goal={goal}
+              onIncrement={onIncrementHandler}
+              onDecrease={onDecreaseHandler}
+            />
+          );
         })}
     </div>
   );

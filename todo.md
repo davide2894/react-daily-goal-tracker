@@ -42,11 +42,13 @@ Ideally, this project should use
 
 ### [] frontend
 
-        [] homepage
-            [] welcome message
-            [] cta to go to the goals page when clicked
-            [] cta to register (to add later when i develop the user management backend logic)
-            [] cta to login (to add later when i develop the user management backend logic)
+#### [] main logic and structuire
+
+        [x] homepage
+            [x] welcome message
+            [x] cta to go to the goals page when clicked
+            [x] cta to register (to add later when i develop the user management backend logic)
+            [x] cta to login (to add later when i develop the user management backend logic)
         [] goals page
             [] goals list
                 - state: goalsList
@@ -69,11 +71,36 @@ Ideally, this project should use
                 [] delete goal btn
                     -> onClick -> call onDeleteClick prop fn to set parent goalsList
 
+#### [] style
+
+    [] home
+        [] goals cta
+        [] register cta
+        [] login cta
+    [] goals page
+        [] goal component
+        [] add goal btn
+        [] goal form
+    [] register page
+    [] login page
+
 ### [] backend
 
+        [] myaccount component
         [] create user db
         [] handle user login
         [] handle user registration
+        [] my account on hover
+            [] open my account layer with login and register cta
+            [] click on login cta
+                -> if user exists -> go to login page
+                -> if user doesn't exist -> go to register page
+        [] homepage
+            [] if user is logged
+                -> don't show my account button
+                -> show sign out button
+            [] if user doesn't exist
+                -> show my account cta
 
 ## [] unit
 
