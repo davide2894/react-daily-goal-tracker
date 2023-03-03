@@ -1,4 +1,6 @@
+@use "../../common/common.scss" as *;
+
 .goal {
-  margin: 25px auto;
+  margin: $space25 auto;
   align-self: flex-start;
 }
