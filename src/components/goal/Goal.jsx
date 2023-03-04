@@ -8,7 +8,7 @@ function Goal({ goal, onIncrement, onDecrease }) {
       <div className="score">
         <button
           className="score__decrease"
-          onClick={onDecrease}
+          onClick={onScoreDecrease}
           disabled={goal.score.actual === goal.score.min}>
           -
         </button>
@@ -17,7 +17,7 @@ function Goal({ goal, onIncrement, onDecrease }) {
         <span className="score__toReach">{goal.score.max}</span>
         <button
           className="score__increase"
-          onClick={onIncrement}
+          onClick={onScoreIncrease}
           disabled={goal.score.actual === goal.score.max}>
           +
         </button>

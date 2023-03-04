@@ -15,18 +15,18 @@ function Goals() {
     },
   ]);
 
-  function onIncrementHandler() {
-    setGoalsList((prevGoaList) =>
+  function onIncreaseHandler() {
+    setGoalsList((prevGoaList) => {
       prevGoaList.map((prevGoal) => {
         return {
           ...prevGoal,
           score: {
             ...prevGoal.score,
-            actual: prevGoal.score.actual++,
+            actual: prevGoal.score.actual + 1,
           },
         };
-      })
-    );
+      });
+    });
   }
 
   function onDecreaseHandler() {
@@ -36,7 +36,7 @@ function Goals() {
           ...prevGoal,
           score: {
             ...prevGoal.score,
-            actual: prevGoal.score.actual--,
+            actual: prevGoal.score.actual - 1,
           },
         };
       })
@@ -55,8 +55,8 @@ function Goals() {
             <Goal
               key={idx}
               goal={goal}
-              onIncrement={onIncrementHandler}
-              onDecrease={onDecreaseHandler}
+              onScoreIncrease={onIncreaseHandler}
+              onScoreDecrease={onDecreaseHandler}
             />
           );
         })}
