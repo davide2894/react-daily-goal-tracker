@@ -67,6 +67,7 @@ Ideally, this project should use
                         [] fix bug: on increase first click doesn't fire
                     [x] decrease score btn
                         [x] click -> increase score by 1 -> setGoalsCount(prevGoalsCount => prevGoalsCount + 1)
+                    [] on goal max score reached: color goal card by green and disable buttons
                 [] edit goal btn
                     - onclick -> open edit form popup
                 [] delete goal btn
