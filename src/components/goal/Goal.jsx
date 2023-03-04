@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Goal.scss";
 
-function Goal({ goal, onIncrement, onDecrease }) {
+function Goal({ goal, onScoreIncrease, onScoreDecrease }) {
   return (
     <div className="goal">
       <p className="goal__title">{goal.title}</p>
