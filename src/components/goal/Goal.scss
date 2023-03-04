@@ -5,6 +5,11 @@
   align-self: flex-start;
   text-align: left;
 
+  &--completed {
+    background-color: palegreen;
+    pointer-events: none;
+  }
+
   &__title {
     margin-bottom: $space16;
   }

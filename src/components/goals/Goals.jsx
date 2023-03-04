@@ -12,18 +12,21 @@ function Goals() {
         min: 0,
         actual: 0,
       },
+      isComplete: false,
     },
   ]);
 
   function onIncreaseHandler() {
     setGoalsList((prevGoaList) =>
       prevGoaList.map((prevGoal) => {
+        const newActual = prevGoal.score.actual + 1;
         return {
           ...prevGoal,
           score: {
             ...prevGoal.score,
-            actual: prevGoal.score.actual + 1,
+            actual: newActual,
           },
+          isComplete: newActual === prevGoal.score.max,
         };
       })
     );
