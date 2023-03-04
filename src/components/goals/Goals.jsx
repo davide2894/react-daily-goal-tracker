@@ -16,7 +16,7 @@ function Goals() {
   ]);
 
   function onIncreaseHandler() {
-    setGoalsList((prevGoaList) => {
+    setGoalsList((prevGoaList) =>
       prevGoaList.map((prevGoal) => {
         return {
           ...prevGoal,
@@ -25,8 +25,8 @@ function Goals() {
             actual: prevGoal.score.actual + 1,
           },
         };
-      });
-    });
+      })
+    );
   }
 
   function onDecreaseHandler() {
