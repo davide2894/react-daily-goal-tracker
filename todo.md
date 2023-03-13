@@ -61,19 +61,23 @@ Ideally, this project should use
                 - state:
                     - goalCount
                 - key=uniqueId (da capire come renderlo unico se gli obiettivi li creo a mano, e non mi arrivano da un'api). L'importante è che l'id non arrivi
-                [] add goal
+                [x] add goal
                     [] click on button
-                        [] open add goal form
-                    [] compile form
-                    [] on form submit
-                        [] update goalsListState
-                [] put the form in a modal
-                    [] create a modal
-                    [] put the form in there
-                    [] on add goal btn click
-                        [] set modal state to open
-                        [] when modal state is open (true) -> show modal
-                        [] when modal state is not open (false) -> hide modal
+                        [x] open add goal form
+                    [x] compile form
+                    [x] on form submit
+                        [x] validation
+                            [x] title must be text
+                            [x] score must be a valid number
+                            [x] id must be unique
+                        [x] update goalsListState
+                [x] put the form in a modal
+                    [x] create a modal
+                    x put the form in there
+                    [x] on add goal btn click
+                        [x] when modal state is open (true) -> show modal
+                        [x] set modal state to open
+                        [x] when modal state is not open (false) -> hide modal
                 [x] goal score
                     [x] report times goal was met / total times the goas is supposed to be met
                     [x] increase score btn
@@ -83,9 +87,24 @@ Ideally, this project should use
                         [x] click -> increase score by 1 -> setGoalsCount(prevGoalsCount => prevGoalsCount + 1)
                     [x] on goal max score reached: color goal card by green and disable
                 [] edit goal btn
-                    - onclick -> open edit form popup
+                    [] open edit form modal on edit button click
+                    [] when you open the form, form title and score input fields should be filled with data from that specific goal in the state
+                    [] edit of info inside input field is allowed
+                    [] submit
+                        [] goal title input field should still be of type text
+                        [] goal score input field should still be of type number
+                        [] in the state, we should update only the goal object that is directly interested (filtering done by matching goal unique id)
+                    [] page should now display the same number of goals
+                    [] page should now display the same number of goals in the same order
+                    [] page should now display the same number of goals in the same order and unique ids are not changed
+                    [] click and counter to increment should still work on same goal
+                    [] click and counter to increment should still work on same goal
+                    [] click and counter to increment should still work on other goals
+                    [] click and counter to increment should still work on other goals
                 [] delete goal btn
-                    -> onClick -> call onDeleteClick prop fn to set parent goalsList
+                    [] clicking on this button should delete the matching goal item in global goals state array
+                    [] regression test on goal lists
+            [] landing: keep track of all the added goal, which means: persist goal data on page reload
 
 #### [] style
 
