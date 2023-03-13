@@ -1,0 +1,15 @@
+@use "../../common/common.scss" as *;
+
+.newGoalButton {
+  &__button {
+    margin-top: $space16;
+    width: 60px;
+    height: 60px;
+    background-color: palegoldenrod;
+    border-radius: 50%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

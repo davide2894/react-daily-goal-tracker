@@ -1,6 +1,9 @@
 import "./Goal.scss";
+import { incrementScore, decrementScore } from "../../redux/slices/goalSlice";
+import { useDispatch } from "react-redux";
 
 function Goal({ goal, onScoreIncrease, onScoreDecrease }) {
+  const dispatch = useDispatch();
   const goalWrapperClasses = `goal ${goal.isComplete ? "goal--completed" : ""}`;
 
   return (
@@ -9,7 +12,7 @@ function Goal({ goal, onScoreIncrease, onScoreDecrease }) {
       <div className="score">
         <button
           className="score__decrease"
-          onClick={onScoreDecrease}
+          onClick={() => dispatch(decrementScore(goal))}
           disabled={goal.score.actual === goal.score.min || goal.isComplete}>
           -
         </button>
@@ -18,7 +21,9 @@ function Goal({ goal, onScoreIncrease, onScoreDecrease }) {
         <span className="score__toReach">{goal.score.max}</span>
         <button
           className="score__increase"
-          onClick={onScoreIncrease}
+          onClick={() => {
+            dispatch(incrementScore(goal));
+          }}
           disabled={goal.score.actual === goal.score.max || goal.isComplete}>
           +
         </button>
