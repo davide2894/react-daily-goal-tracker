@@ -9,6 +9,10 @@ function NewGoalButton() {
     setShow(true);
   }
 
+  function onCloseButtonClick() {
+    setShow(false);
+  }
+
   return (
     <div className="newGoalButton newGoalButton__wrapper">
       <button
@@ -16,7 +20,7 @@ function NewGoalButton() {
         onClick={onAddGoalButtonClick}>
         +
       </button>
-      <GoalForm mode={"new"} show={true} />
+      <GoalForm mode={"new"} show={show} onCloseProp={onCloseButtonClick} />
     </div>
   );
 }
