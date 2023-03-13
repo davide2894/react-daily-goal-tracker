@@ -15,7 +15,7 @@ function GoalForm({ mode, show }) {
     const newGoal = {
       title: goalTitle,
       score: {
-        max: goalScore,
+        max: parseInt(goalScore),
         min: 0,
         actual: 0,
       },
@@ -47,7 +47,7 @@ function GoalForm({ mode, show }) {
             <label htmlFor="scoreInput">
               times to meet per week
               <input
-                type="text"
+                type="number"
                 name="score"
                 id="scoreInput"
                 value={goalScore}
