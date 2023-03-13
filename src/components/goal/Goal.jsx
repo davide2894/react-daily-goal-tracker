@@ -38,6 +38,7 @@ function Goal({ goal, onScoreIncrease, onScoreDecrease }) {
           ***DELETE***
         </button>
       </div>
+      <hr></hr>
     </div>
   );
 }

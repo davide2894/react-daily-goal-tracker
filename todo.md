@@ -50,24 +50,38 @@ Ideally, this project should use
             [x] cta to register (to add later when i develop the user management backend logic)
             [x] cta to login (to add later when i develop the user management backend logic)
         [] goals page
-            [] goals list
-                - state: goalsList
-                - fns
-                    - onGoalDelete -> setGoalsList by removing goal
-                    - onGoalAdd -> setGoalsList +1
+            [x] goals list
+                [x] state: goalsList
+                    [x] set initial state
+                    [x] print all initial goals on landing
+                [x] user interactions
+                    - onGoalIncrement -> setGoalsList +1
+                    - onGoalDecrement -> setGoalsList by removing goal
             [] goal tracker component
                 - state:
                     - goalCount
                 - key=uniqueId (da capire come renderlo unico se gli obiettivi li creo a mano, e non mi arrivano da un'api). L'importante è che l'id non arrivi
-                [] add goal -> update goalsListState
-                [] goal score
+                [] add goal
+                    [] click on button
+                        [] open add goal form
+                    [] compile form
+                    [] on form submit
+                        [] update goalsListState
+                [] put the form in a modal
+                    [] create a modal
+                    [] put the form in there
+                    [] on add goal btn click
+                        [] set modal state to open
+                        [] when modal state is open (true) -> show modal
+                        [] when modal state is not open (false) -> hide modal
+                [x] goal score
                     [x] report times goal was met / total times the goas is supposed to be met
-                    [] increase score btn
+                    [x] increase score btn
                         [x] click -> increase score by 1 -> setGoalsCount(prevGoalsCount => prevGoalsCount + 1)
-                        [] fix bug: on increase first click doesn't fire
+                        [x] fix bug: on increase first click doesn't fire
                     [x] decrease score btn
                         [x] click -> increase score by 1 -> setGoalsCount(prevGoalsCount => prevGoalsCount + 1)
-                    [] on goal max score reached: color goal card by green and disable buttons
+                    [x] on goal max score reached: color goal card by green and disable
                 [] edit goal btn
                     - onclick -> open edit form popup
                 [] delete goal btn
