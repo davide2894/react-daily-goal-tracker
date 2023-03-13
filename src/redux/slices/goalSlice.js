@@ -30,7 +30,7 @@ export const goalSlice = createSlice({
   initialState,
   reducers: {
     addGoal: (state, action) => {
-      return action.payload;
+      state.goals.push(action.payload);
     },
     incrementScore: (state, action) => {
       const goalToUpdate = state.goals.find(

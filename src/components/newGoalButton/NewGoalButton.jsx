@@ -16,7 +16,7 @@ function NewGoalButton() {
         onClick={onAddGoalButtonClick}>
         +
       </button>
-      <GoalForm mode={"new"} show={show} />
+      <GoalForm mode={"new"} show={true} />
     </div>
   );
 }
