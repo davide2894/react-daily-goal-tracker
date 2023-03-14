@@ -1,10 +1,9 @@
 import { useState } from "react";
-import "./GoalForm.scss";
 import { v4 as uuidv4 } from "uuid";
 import { addGoal } from "../../redux/slices/goalSlice";
 import { useDispatch } from "react-redux";
 
-function GoalForm({ onCloseProp }) {
+function NewGoalForm({ onCloseProp }) {
   const [goalTitle, setGoalTitle] = useState("");
   const [goalScore, setGoalScore] = useState("");
 
@@ -70,4 +69,4 @@ function GoalForm({ onCloseProp }) {
   );
 }
 
-export default GoalForm;
+export default NewGoalForm;

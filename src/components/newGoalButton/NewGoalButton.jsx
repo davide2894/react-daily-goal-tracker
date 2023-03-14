@@ -1,5 +1,5 @@
 import "./NewGoalButton.scss";
-import NewGoalForm from "../goalForm/GoalForm";
+import NewGoalForm from "../goalForm/NewGoalForm";
 import { useState } from "react";
 
 function NewGoalButton() {

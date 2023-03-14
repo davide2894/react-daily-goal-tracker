@@ -1,5 +1,9 @@
 import "./Goal.scss";
-import { incrementScore, decrementScore } from "../../redux/slices/goalSlice";
+import {
+  incrementScore,
+  decrementScore,
+  deleteGoal,
+} from "../../redux/slices/goalSlice";
 import { useDispatch } from "react-redux";
 import EditGoalForm from "../editGoalForm/EditGoalForm";
 import { useState } from "react";
@@ -44,7 +48,8 @@ function Goal({ goal }) {
         </button>
         <button
           className="score__cta score__cta--delete"
-          disabled={goal.isComplete}>
+          disabled={goal.isComplete}
+          onClick={() => dispatch(deleteGoal(goal))}>
           ***DELETE***
         </button>
         {showEditGoalForm && (

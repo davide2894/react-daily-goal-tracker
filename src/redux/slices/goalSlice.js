@@ -59,9 +59,22 @@ export const goalSlice = createSlice({
         goalToUpdate.score.actual -= 1;
       }
     },
+    deleteGoal: (state, action) => {
+      const goalToUpdate = state.goals.find(
+        (goal) => goal.id === action.payload.id
+      );
+      if (goalToUpdate) {
+        state.goals = state.goals.filter((el) => el.id !== goalToUpdate.id);
+      }
+    },
   },
 });
 
-export const { addGoal, updateGoal, incrementScore, decrementScore } =
-  goalSlice.actions;
+export const {
+  addGoal,
+  updateGoal,
+  deleteGoal,
+  incrementScore,
+  decrementScore,
+} = goalSlice.actions;
 export default goalSlice.reducer;
