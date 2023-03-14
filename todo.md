@@ -86,38 +86,25 @@ Ideally, this project should use
                     [x] decrease score btn
                         [x] click -> increase score by 1 -> setGoalsCount(prevGoalsCount => prevGoalsCount + 1)
                     [x] on goal max score reached: color goal card by green and disable
-                [] edit goal btn
-                    [] open edit form modal on edit button click
-                    [] when you open the form, form title and score input fields should be filled with data from that specific goal in the state
-                    [] edit of info inside input field is allowed
-                    [] submit
-                        [] goal title input field should still be of type text
-                        [] goal score input field should still be of type number
-                        [] in the state, we should update only the goal object that is directly interested (filtering done by matching goal unique id)
-                    [] page should now display the same number of goals
-                    [] page should now display the same number of goals in the same order
-                    [] page should now display the same number of goals in the same order and unique ids are not changed
-                    [] click and counter to increment should still work on same goal
-                    [] click and counter to increment should still work on same goal
-                    [] click and counter to increment should still work on other goals
-                    [] click and counter to increment should still work on other goals
-                [] delete goal btn
-                    [] clicking on this button should delete the matching goal item in global goals state array
-                    [] regression test on goal lists
+                [x] edit goal btn
+                    [x] open edit form modal on edit button click
+                    [x] when you open the form, form title and score input fields should be filled with data from that specific goal in the state
+                    [x] edit of info inside input field is allowed
+                    [x] submit
+                        [x] goal title input field should still be of type text
+                        [x] goal score input field should still be of type number
+                        [x] in the state, we should update only the goal object that is directly interested (filtering done by matching goal unique id)
+                    [x] page should now display the same number of goals
+                    [x] page should now display the same number of goals in the same order
+                    [x] page should now display the same number of goals in the same order and unique ids are not changed
+                    [x] click and counter to increment should still work on same goal
+                    [x] click and counter to increment should still work on same goal
+                    [x] click and counter to increment should still work on other goals
+                    [x] click and counter to increment should still work on other goals
+                [x] delete goal btn
+                    [x] clicking on this button should delete the matching goal item in global goals state array
+                    [x] regression test on goal lists
             [] landing: keep track of all the added goal, which means: persist goal data on page reload
-
-#### [] style
-
-    [] home
-        [] goals cta
-        [] register cta
-        [] login cta
-    [] goals page
-        [] goal component
-        [] add goal btn
-        [] goal form
-    [] register page
-    [] login page
 
 ### [] backend
 
@@ -144,5 +131,18 @@ Ideally, this project should use
     [] develop first unit test on goal deletion
     [] develop first unit test on user registration
     [] develop first unit test on user login
+
+#### [] style
+
+    [] home
+        [] goals cta
+        [] register cta
+        [] login cta
+    [] goals page
+        [] goal component
+        [] add goal btn
+        [] goal form
+    [] register page
+    [] login page
 
 # [] test
