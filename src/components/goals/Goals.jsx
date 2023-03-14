@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Goals() {
-  const goals = useSelector((state) => state.goalReducerFromStore.goals);
+  const goals = useSelector((state) => state.goalReducer.goals);
 
   return (
     <div className="goals">
