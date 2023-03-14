@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { addGoal } from "../../redux/slices/goalSlice";
 import { useDispatch } from "react-redux";
 
-function GoalForm({ show, onCloseProp }) {
+function GoalForm({ onCloseProp }) {
   const [goalTitle, setGoalTitle] = useState("");
   const [goalScore, setGoalScore] = useState("");
 
@@ -23,6 +23,7 @@ function GoalForm({ show, onCloseProp }) {
       id: uuidv4(),
     };
     dispatch(addGoal(newGoal));
+    onCloseProp();
   }
 
   return (
