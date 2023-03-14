@@ -1,14 +1,18 @@
-import { useState } from "react";
 import "./GoalForm.scss";
 import { v4 as uuidv4 } from "uuid";
 import { addGoal } from "../../redux/slices/goalSlice";
-import { useDispatch } from "react-redux";
+import {
+  setGoalTitle,
+  setGoalScore,
+  hideForm,
+} from "../../redux/slices/goalFormSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-function GoalForm({ mode, show, onCloseProp }) {
-  const [goalTitle, setGoalTitle] = useState("");
-  const [goalScore, setGoalScore] = useState("");
-
+function GoalForm() {
   const dispatch = useDispatch();
+  const show = useSelector((state) => state.goalFormReducer.show);
+  const goalTitle = useSelector((state) => state.goalFormReducer.goalTitle);
+  const goalScore = useSelector((state) => state.goalFormReducer.goalScore);
 
   function onFormSubmit(evt) {
     evt.preventDefault();
@@ -28,7 +32,9 @@ function GoalForm({ mode, show, onCloseProp }) {
   return (
     show && (
       <>
-        <button className="goalForm__close" onClick={onCloseProp}>
+        <button
+          className="goalForm__close"
+          onClick={() => dispatch(hideForm())}>
           X
         </button>
         <div className="goalForm">
@@ -42,7 +48,7 @@ function GoalForm({ mode, show, onCloseProp }) {
                   id="nameInput"
                   value={goalTitle}
                   onChange={(evt) => {
-                    setGoalTitle(evt.target.value);
+                    dispatch(setGoalTitle(evt.target.value));
                   }}
                 />
               </label>
@@ -56,7 +62,7 @@ function GoalForm({ mode, show, onCloseProp }) {
                   id="scoreInput"
                   value={goalScore}
                   onChange={(evt) => {
-                    setGoalScore(evt.target.value);
+                    dispatch(setGoalScore(evt.target.value));
                   }}
                 />
               </label>

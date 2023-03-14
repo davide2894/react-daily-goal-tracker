@@ -1,8 +1,10 @@
 import "./Goal.scss";
 import { incrementScore, decrementScore } from "../../redux/slices/goalSlice";
+import { showForm } from "../../redux/slices/goalFormSlice";
 import { useDispatch } from "react-redux";
+import GoalForm from "../goalForm/GoalForm";
 
-function Goal({ goal, onScoreIncrease, onScoreDecrease }) {
+function Goal({ goal }) {
   const dispatch = useDispatch();
   const goalWrapperClasses = `goal ${goal.isComplete ? "goal--completed" : ""}`;
 
@@ -22,14 +24,15 @@ function Goal({ goal, onScoreIncrease, onScoreDecrease }) {
         <button
           className="score__increase"
           onClick={() => {
-            dispatch(incrementScore(goal));
+            dispatch(() => incrementScore(goal));
           }}
           disabled={goal.score.actual === goal.score.max || goal.isComplete}>
           +
         </button>
         <button
           className="score__cta score__cta--edit"
-          disabled={goal.isComplete}>
+          disabled={goal.isComplete}
+          onClick={() => dispatch(showForm())}>
           ***EDIT***
         </button>
         <button
@@ -37,6 +40,7 @@ function Goal({ goal, onScoreIncrease, onScoreDecrease }) {
           disabled={goal.isComplete}>
           ***DELETE***
         </button>
+        <GoalForm />
       </div>
       <hr></hr>
     </div>
