@@ -32,8 +32,14 @@ export const goalSlice = createSlice({
     addGoal: (state, action) => {
       state.goals.push(action.payload);
     },
-    editGoal: (state, action) => {
-      state.goals.push(action.payload);
+    updateGoal: (state, action) => {
+      const goalToUpdate = state.goals.find(
+        (goal) => goal.id === action.payload.id
+      );
+      if (goalToUpdate) {
+        goalToUpdate.title = action.payload.title;
+        goalToUpdate.score.max = action.payload.score;
+      }
     },
     incrementScore: (state, action) => {
       const goalToUpdate = state.goals.find(
@@ -56,6 +62,6 @@ export const goalSlice = createSlice({
   },
 });
 
-export const { addGoal, editGoal, incrementScore, decrementScore } =
+export const { addGoal, updateGoal, incrementScore, decrementScore } =
   goalSlice.actions;
 export default goalSlice.reducer;

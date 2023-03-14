@@ -1,12 +1,21 @@
 import "./Goal.scss";
 import { incrementScore, decrementScore } from "../../redux/slices/goalSlice";
-import { showForm } from "../../redux/slices/goalFormSlice";
 import { useDispatch } from "react-redux";
-import GoalForm from "../goalForm/GoalForm";
+import EditGoalForm from "../editGoalForm/EditGoalForm";
+import { useState } from "react";
 
 function Goal({ goal }) {
+  const [showEditGoalForm, setShowEditGoalForm] = useState(false);
   const dispatch = useDispatch();
   const goalWrapperClasses = `goal ${goal.isComplete ? "goal--completed" : ""}`;
+
+  function onEditFormOpenHandler() {
+    setShowEditGoalForm(true);
+  }
+
+  function onEditFormCloseHandler() {
+    setShowEditGoalForm(false);
+  }
 
   return (
     <div className={goalWrapperClasses}>
@@ -23,16 +32,14 @@ function Goal({ goal }) {
         <span className="score__toReach">{goal.score.max}</span>
         <button
           className="score__increase"
-          onClick={() => {
-            dispatch(() => incrementScore(goal));
-          }}
+          onClick={() => dispatch(incrementScore(goal))}
           disabled={goal.score.actual === goal.score.max || goal.isComplete}>
           +
         </button>
         <button
           className="score__cta score__cta--edit"
           disabled={goal.isComplete}
-          onClick={() => dispatch(showForm())}>
+          onClick={onEditFormOpenHandler}>
           ***EDIT***
         </button>
         <button
@@ -40,7 +47,14 @@ function Goal({ goal }) {
           disabled={goal.isComplete}>
           ***DELETE***
         </button>
-        <GoalForm />
+        {showEditGoalForm && (
+          <EditGoalForm
+            onCloseProp={onEditFormCloseHandler}
+            goalTitleToEdit={goal.title}
+            goalScoreToEdit={goal.score}
+            id={goal.id}
+          />
+        )}
       </div>
       <hr></hr>
     </div>

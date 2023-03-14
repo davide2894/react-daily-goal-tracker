@@ -1,38 +1,32 @@
 import { useState } from "react";
-import "./GoalForm.scss";
-import { v4 as uuidv4 } from "uuid";
-import { addGoal } from "../../redux/slices/goalSlice";
+import { updateGoal } from "../../redux/slices/goalSlice";
 import { useDispatch } from "react-redux";
 
-function GoalForm({ show, onCloseProp }) {
-  const [goalTitle, setGoalTitle] = useState("");
-  const [goalScore, setGoalScore] = useState("");
+function EditGoalForm({ onCloseProp, goalTitleToEdit, goalScoreToEdit, id }) {
+  const [goalTitle, setGoalTitle] = useState(goalTitleToEdit || "");
+  const [goalScore, setGoalScore] = useState(goalScoreToEdit || "");
 
   const dispatch = useDispatch();
 
   function onFormSubmit(evt) {
     evt.preventDefault();
-    const newGoal = {
+    const updatedGoalData = {
       title: goalTitle,
-      score: {
-        max: parseInt(goalScore),
-        min: 0,
-        actual: 0,
-      },
-      isComplete: false,
-      id: uuidv4(),
+      score: goalScore,
+      id: id,
     };
-    dispatch(addGoal(newGoal));
+    dispatch(updateGoal(updatedGoalData));
+    onCloseProp();
   }
 
   return (
     <>
-      <button className="goalForm__close" onClick={onCloseProp}>
+      <button className="editGoalForm__close" onClick={onCloseProp}>
         X
       </button>
-      <div className="goalForm">
+      <div className="editGoalForm">
         <form onSubmit={(evt) => onFormSubmit(evt)}>
-          <div className="goalForm__name">
+          <div className="editGoalForm__name">
             <label htmlFor="nameInput">
               Goal title:
               <input
@@ -46,14 +40,14 @@ function GoalForm({ show, onCloseProp }) {
               />
             </label>
           </div>
-          <div className="goalForm__score">
+          <div className="editGoalForm__score">
             <label htmlFor="scoreInput">
               times to meet per week
               <input
                 type="number"
                 name="score"
                 id="scoreInput"
-                value={goalScore}
+                value={goalScore.max}
                 onChange={(evt) => {
                   setGoalScore(evt.target.value);
                 }}
@@ -61,7 +55,7 @@ function GoalForm({ show, onCloseProp }) {
             </label>
           </div>
           <button type="submit" value="Submit">
-            Add goal
+            Edit goal
           </button>
         </form>
       </div>
@@ -69,4 +63,4 @@ function GoalForm({ show, onCloseProp }) {
   );
 }
 
-export default GoalForm;
+export default EditGoalForm;

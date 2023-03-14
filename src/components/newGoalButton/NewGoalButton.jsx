@@ -1,19 +1,26 @@
 import "./NewGoalButton.scss";
 import GoalForm from "../goalForm/GoalForm";
-import { useDispatch } from "react-redux";
-import { showForm } from "../../redux/slices/goalFormSlice";
+import { useState } from "react";
 
 function NewGoalButton() {
-  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+
+  function onAddGoalButtonClick() {
+    setShow(true);
+  }
+
+  function onCloseButtonClick() {
+    setShow(false);
+  }
 
   return (
     <div className="newGoalButton newGoalButton__wrapper">
       <button
         className="newGoalButton__button cta"
-        onClick={() => dispatch(showForm())}>
+        onClick={onAddGoalButtonClick}>
         +
       </button>
-      <GoalForm />
+      {show && <GoalForm onCloseProp={onCloseButtonClick} />}
     </div>
   );
 }
