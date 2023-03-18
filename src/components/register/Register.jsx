@@ -2,34 +2,38 @@ import React, { useState } from "react";
 import { registerWithEmailAndPassword } from "../../firebase";
 
 function Register() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    registerWithEmailAndPassword(email, password);
-  }
-
-  function handleEmailChange(evt) {
-    setEmail(evt.target.value);
-  }
-
-  function handlePasswordChange(evt) {
-    setPassword(evt.target.value);
+    registerWithEmailAndPassword(name, email, password);
   }
 
   return (
     <div className="myAccount__form myAccount__form--register">
-      <p>Register here</p>
+      <p>First time here? Register an account to start setting goals! </p>
       <br></br>
       <form onSubmit={handleSubmit}>
+        <div className="form-control">
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter name"
+            value={name}
+            onChange={(evt) => setName(evt.target.value)}
+          />
+        </div>
         <div className="form-control">
           <label>Email</label>
           <input
             type="text"
             name="email"
+            placeholer="Enter email"
             value={email}
-            onChange={(evt) => handleEmailChange(evt)}
+            onChange={(evt) => setEmail(evt.target.value)}
           />
         </div>
         <div className="form-control">
@@ -37,8 +41,9 @@ function Register() {
           <input
             type="password"
             name="password"
+            placeholder="Enter password"
             value={password}
-            onChange={(evt) => handlePasswordChange(evt)}
+            onChange={(evt) => setPassword(evt.target.value)}
           />
         </div>
         <div className="form-control">

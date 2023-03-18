@@ -31,7 +31,7 @@ provider.setCustomParameters({
   prompt: "select_account",
 });
 
-const registerWithEmailAndPassword = async (email, password) => {
+const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const registrationResult = await createUserWithEmailAndPassword(
       auth,
@@ -41,8 +41,10 @@ const registerWithEmailAndPassword = async (email, password) => {
     const user = registrationResult.user;
     console.log({ registedUser: user });
     await addDoc(collection(db, "users"), {
-      email: user.email,
+      name,
+      email,
       uid: user.uid,
+      authProvider: "local",
       refreshToken: user.refreshToken,
     });
   } catch (err) {
