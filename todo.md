@@ -108,21 +108,37 @@ Ideally, this project should use
 
 ### [] backend
 
-        [] myaccount component
-        [] create user db
-        [] handle user login
-        [] handle user registration
+        [] myaccount
+            [x] login
+                [x] enable user to login
+            [x] register
+                [x] enable user to register
+            [] on landing
+                [] if user is logged
+                    [] show welcome message with user.name
+                    [] show goals route
+                [] if user is not logged
+                    [] show my account to let user register or logged
+        [] associate goals to logged user
+            [] firestore
+                [] creare user and goals data structure
+        [] homepage
+            [] if user is logged
+                [] don't show my account button
+                [] show sign out button
+                [] show goals route only to logged user
+                [] goals functionalities provided via firebase and saved through firestore
+                    [] retrieve goals from user document (firestore)
+                    [] add goal: update goals subcollection for that specific user document (firestore)
+                    [] remove goal: remove goals subcollection for that specific user document (firestore)
+                    [] update goal: update goal in goal subcollection for that specific user document (firestore)
+            [] if user doesn't exist
+                -> show link to myAccount page
         [] my account on hover
             [] open my account layer with login and register cta
             [] click on login cta
                 -> if user exists -> go to login page
                 -> if user doesn't exist -> go to register page
-        [] homepage
-            [] if user is logged
-                -> don't show my account button
-                -> show sign out button
-            [] if user doesn't exist
-                -> show my account cta
 
 ## [] unit
 
@@ -146,3 +162,9 @@ Ideally, this project should use
     [] login page
 
 # [] test
+
+# [] migrate code to typeScrit
+
+    [] migrate all of the code to TypeScript
+    [] test that everything works accordingly
+    [] push all the new codde
