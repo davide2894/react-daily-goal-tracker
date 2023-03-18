@@ -2,9 +2,11 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-
-import { getFirestore } from "firebase/firestore";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,51 +24,43 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const provider = new firebase.auth.GoogleAuthProvider();
-const db = getFirestore();
+const db = firebase.firestore();
 const auth = firebase.auth();
 
 provider.setCustomParameters({
   prompt: "select_account",
 });
 
-const registerWithEmailAndPassword = (email, password) =>
-  auth
-    .createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      // Add a new document in collection "cities"
-      db.collection("users")
-        .doc("user")
-        .set({
-          name: user,
-          email: "test@test.test",
-        })
-        .then(() => {
-          console.log("Document successfully written!");
-        })
-        .catch((error) => {
-          console.error("Error writing document: ", error);
-        });
-    })
-    .catch((error) => {
-      alert(error.message);
+const registerWithEmailAndPassword = async (email, password) => {
+  try {
+    const registrationResult = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = registrationResult.user;
+    console.log({ registedUser: user });
+    await addDoc(collection(db, "users"), {
+      email: user.email,
+      uid: user.uid,
+      refreshToken: user.refreshToken,
     });
+  } catch (err) {
+    console.error(err.message);
+  }
+};
 
-const loginWithEmailAndPassword = (email, password) =>
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      console.log({
-        msg: "user logged in successfully",
-        user: userCredential.user,
-      });
-    })
-    .catch((error) => {
-      alert({
-        errorCode: error.code,
-        errorMessage: error.message,
-      });
-    });
+const loginWithEmailAndPassword = async (email, password) => {
+  try {
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    if (user) {
+      console.log("user logged successfully");
+    }
+  } catch (err) {
+    console.error(err.message);
+  }
+};
 
 export {
   firebase,
