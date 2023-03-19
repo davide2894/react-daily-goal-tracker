@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -65,18 +65,6 @@ const loginWithEmailAndPassword = async (email, password) => {
   }
 };
 
-const signUserOut = () => {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-      console.log("user was successfully signed out");
-    })
-    .catch((error) => {
-      // An error happened.
-      console.error(error.message);
-    });
-};
-
 export {
   firebase,
   provider,
@@ -84,5 +72,4 @@ export {
   auth,
   registerWithEmailAndPassword,
   loginWithEmailAndPassword,
-  signUserOut,
 };
