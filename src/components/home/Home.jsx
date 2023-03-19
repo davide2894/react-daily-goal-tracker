@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./Home.scss";
 import MyAccount from "../myAccount/MyAccount";
 import { useEffect, useState } from "react";
