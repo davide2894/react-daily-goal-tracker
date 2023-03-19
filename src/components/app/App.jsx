@@ -1,8 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "../home/Home";
-import Goals from "../goals/Goals";
 import MyAccount from "../myAccount/MyAccount";
+import Goals from "../goals/Goals";
 
 function App() {
   return (
