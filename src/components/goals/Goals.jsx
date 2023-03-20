@@ -14,6 +14,10 @@ function Goals() {
   const { data, isLoading, isError } = useFetchGoalsQuery(currentUser);
   const x = "";
 
+  //TODO:
+  // - use goals fetched from firestore to fill state
+  // - remove hardcoded goals from initialstate slice
+
   function handleSignOut() {
     signOut(auth)
       .then(() => {

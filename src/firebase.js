@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -41,7 +41,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     );
     const user = registrationResult.user;
     console.log({ registedUser: user });
-    await addDoc(collection(db, "users"), {
+    await setDoc(doc(db, "users", `${user.email}-${user.uid}`), {
       name,
       email,
       uid: user.uid,

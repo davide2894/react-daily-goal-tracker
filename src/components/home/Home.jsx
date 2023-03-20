@@ -17,7 +17,13 @@ function Home() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsUserLogged(true);
-        dispatch(login(user.uid));
+        dispatch(
+          login({
+            email: user.email,
+            uid: user.uid,
+            userDocId: `${user.email}-${user.uid}`,
+          })
+        );
       } else {
         setIsUserLogged(false);
       }

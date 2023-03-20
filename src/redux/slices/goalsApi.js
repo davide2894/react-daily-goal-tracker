@@ -14,22 +14,20 @@ export const firestoreApi = createApi({
   baseQuery: fakeBaseQuery(),
   endpoints: (build) => ({
     fetchGoals: build.query({
-      queryFn(loggedUserId) {
-        db.collection("users")
+      queryFn(user) {
+        db.collection(`/users/${user.userDocId}/user-goals/`)
           .get()
           .then((querySnapshot) => {
+            let goals = [];
             querySnapshot.forEach((doc) => {
-              // doc.data() is never undefined for query doc snapshots
-              const userDocData = doc.data();
-              if (userDocData.uid === loggedUserId) {
-                console.log(userDocData);
-              }
+              console.log({
+                userDocId: user.userDocId,
+                docData: doc.data(),
+              });
+              goals.push(doc.data());
             });
+            return { data: goals };
           });
-        // const citiesRef = db.collection("cities");
-        // citiesRef.get().then
-        // const query = citiesRef.where("state", "==", "CA");
-        return { data: "test" };
       },
     }),
   }),
