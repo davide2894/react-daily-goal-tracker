@@ -4,9 +4,12 @@ import "./Home.scss";
 import MyAccount from "../myAccount/MyAccount";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/slices/userSlice";
 
 function Home() {
   const [isUserLogged, setIsUserLogged] = useState("");
+  const dispatch = useDispatch();
 
   // check user
   useEffect(() => {
@@ -14,6 +17,7 @@ function Home() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsUserLogged(true);
+        dispatch(login(user.uid));
       } else {
         setIsUserLogged(false);
       }
