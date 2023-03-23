@@ -6,6 +6,7 @@ import {
   useDecrementGoalScoreMutation,
   useDeleteGoalMutation,
   useIncrementGoalScoreMutation,
+  useResetGoalMutation,
 } from "../../redux/slices/goalsApi";
 
 function Goal({ goal, currentUser }) {
@@ -17,6 +18,7 @@ function Goal({ goal, currentUser }) {
   const [setDecrementGoalScore] = useDecrementGoalScoreMutation();
   const [setIncrementGoalScore] = useIncrementGoalScoreMutation();
   const [deleteGoal] = useDeleteGoalMutation();
+  const [resetGoal] = useResetGoalMutation();
 
   function onEditFormOpenHandler() {
     setShowEditGoalForm(true);
@@ -56,6 +58,12 @@ function Goal({ goal, currentUser }) {
           disabled={goal.isComplete}
           onClick={() => deleteGoal({ goal, currentUser })}>
           ***DELETE***
+        </button>
+        <button
+          className="score__cta score__cta--delete"
+          disabled={goal.score.actual === 0}
+          onClick={() => resetGoal({ goal, currentUser })}>
+          ***RESET***
         </button>
         {showEditGoalForm && (
           <EditGoalForm

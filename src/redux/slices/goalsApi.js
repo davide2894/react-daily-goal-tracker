@@ -129,6 +129,24 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
+    resetGoal: builder.mutation({
+      async queryFn({ goal, currentUser }) {
+        try {
+          const docRef = doc(
+            db,
+            `/users/${currentUser.userDocId}/user-goals/`,
+            goal.title
+          );
+          await updateDoc(docRef, {
+            "score.actual": 0,
+          });
+          return { data: goal };
+        } catch (err) {
+          return { error: err };
+        }
+      },
+      invalidatesTags: ["Goals"],
+    }),
   }),
 });
 
@@ -139,4 +157,5 @@ export const {
   useDecrementGoalScoreMutation,
   useIncrementGoalScoreMutation,
   useDeleteGoalMutation,
+  useResetGoalMutation,
 } = firestoreApi;
