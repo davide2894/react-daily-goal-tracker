@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/userSlice";
+import Goals from "../goals/Goals";
 
 function Home() {
   const [isUserLogged, setIsUserLogged] = useState("");
@@ -32,12 +33,15 @@ function Home() {
 
   return (
     <div className="home">
-      <div className="home__welcomeMessage">
-        <p>Welcome to the goals app</p>
-        <p>Click on the button below to reach the goals page</p>
-      </div>
-      {isUserLogged && <Navigate to="/goals" replace={true} />}
-      <MyAccount />
+      {isUserLogged ? (
+        <Goals />
+      ) : (
+        <div className="home__welcomeMessage">
+          <p>Welcome to the goals app</p>
+          <p>Login or register to start working on your goals</p>
+          <MyAccount />
+        </div>
+      )}
     </div>
   );
 }
