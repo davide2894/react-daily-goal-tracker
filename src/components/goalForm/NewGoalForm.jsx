@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { addGoal } from "../../redux/slices/goalSlice";
-import { useDispatch } from "react-redux";
+import { useAddGoalMutation } from "../../redux/slices/goalsApi";
 
 function NewGoalForm({ onCloseProp }) {
   const [goalTitle, setGoalTitle] = useState("");
   const [goalScore, setGoalScore] = useState("");
 
-  const dispatch = useDispatch();
+  const [setAddGoal] = useAddGoalMutation();
+  const currentUser = useSelector((state) => state.userReducer.user);
 
   function onFormSubmit(evt) {
     evt.preventDefault();
@@ -21,7 +22,7 @@ function NewGoalForm({ onCloseProp }) {
       isComplete: false,
       id: uuidv4(),
     };
-    dispatch(addGoal(newGoal));
+    setAddGoal({ newGoal, currentUser });
     onCloseProp();
   }
 

@@ -7,6 +7,7 @@ import {
   getDoc,
   updateDoc,
   getDocs,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -33,7 +34,28 @@ export const firestoreApi = createApi({
       },
       providesTags: ["Goals"],
     }),
+    addGoal: build.mutation({
+      async queryFn({ newGoal, currentUser }) {
+        try {
+          await setDoc(
+            doc(
+              db,
+              `/users/${currentUser.userDocId}/user-goals/`,
+              newGoal.title
+            ),
+            newGoal,
+            { merge: true }
+          );
+          console.log(newGoal);
+          return { data: newGoal };
+        } catch (err) {
+          console.log({ error: err });
+          return { error: err };
+        }
+      },
+      invalidatesTags: ["Goals"],
+    }),
   }),
 });
 
-export const { useFetchGoalsQuery } = firestoreApi;
+export const { useFetchGoalsQuery, useAddGoalMutation } = firestoreApi;

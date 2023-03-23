@@ -41,9 +41,9 @@ function Goals() {
       <NewGoalButton />
       {isLoading && <div>Loading...</div>}
       {isError && <div>Server error. Try again later.</div>}
-      {goals > 0 ? (
-        goals.map((goal, idx) => {
-          return <Goal key={idx} goal={goal} />;
+      {isSuccess && goals ? (
+        goals.map((goal) => {
+          return <Goal key={goal.id} goal={goal} />;
         })
       ) : (
         <div>
