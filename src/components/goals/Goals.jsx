@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
 
 function Goals() {
-  // const goals = useSelector((state) => state.goalReducer.goals);
   const currentUser = useSelector((state) => state.userReducer.user);
   const navigate = useNavigate();
   const {
