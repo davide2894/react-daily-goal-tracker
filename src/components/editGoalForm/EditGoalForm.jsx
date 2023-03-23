@@ -1,21 +1,27 @@
 import { useState } from "react";
-import { updateGoal } from "../../redux/slices/goalSlice";
-import { useDispatch } from "react-redux";
+import { useEditGoalMutation } from "../../redux/slices/goalsApi";
+import { useSelector } from "react-redux";
 
 function EditGoalForm({ onCloseProp, goalTitleToEdit, goalScoreToEdit, id }) {
   const [goalTitle, setGoalTitle] = useState(goalTitleToEdit || "");
   const [goalScore, setGoalScore] = useState(goalScoreToEdit || "");
 
-  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.userReducer.user);
+  const [editGoal] = useEditGoalMutation();
 
   function onFormSubmit(evt) {
     evt.preventDefault();
+
     const updatedGoalData = {
-      title: goalTitle,
-      score: goalScore,
+      originalTitle: goalTitleToEdit,
+      newTitle: goalTitle,
+      newMaxScore: goalScore,
       id: id,
     };
-    dispatch(updateGoal(updatedGoalData));
+
+    // call api endpoint to update goal
+
+    editGoal({ updatedGoalData, currentUser });
     onCloseProp();
   }
 

@@ -81,10 +81,34 @@ export const firestoreApi = createApi({
           await updateDoc(docRef, {
             "score.actual": increment(1),
           });
-          // find goal document that matches goal id
-          // update that goal score by 1
-          // return goal
-          return { data: "ok" };
+          return { data: goal };
+        } catch (err) {
+          return { error: err };
+        }
+      },
+      invalidatesTags: ["Goals"],
+    }),
+    editGoal: builder.mutation({
+      async queryFn({ updatedGoalData, currentUser }) {
+        try {
+          const docRef = doc(
+            db,
+            `/users/${currentUser.userDocId}/user-goals/`,
+            updatedGoalData.originalTitle
+          );
+          await updateDoc(docRef, {
+            "score.max": updatedGoalData.newMaxScore,
+            title: updatedGoalData.newTitle,
+            // problema:
+            // quando aggiorno un obiettivo, se aggiorno il titolo, poi questo nuovo titolo
+            // viene usato come discriminante nell'increment, per cercare il goal
+            // questo perché i goal hanno come id il goal title
+            // todo:
+            // devo trovare un nuovo id per il documento del goal,
+            // che non può essere il title, altrimenti, come si è visto
+            // ho creato del coupling che rende l'applicazione instabile
+          });
+          return { data: updatedGoalData };
         } catch (err) {
           return { error: err };
         }
@@ -97,6 +121,7 @@ export const firestoreApi = createApi({
 export const {
   useFetchGoalsQuery,
   useAddGoalMutation,
+  useEditGoalMutation,
   useDecrementGoalScoreMutation,
   useIncrementGoalScoreMutation,
 } = firestoreApi;
