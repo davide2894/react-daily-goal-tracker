@@ -1,17 +1,22 @@
 import "./Goal.scss";
-import {
-  incrementScore,
-  decrementScore,
-  deleteGoal,
-} from "../../redux/slices/goalSlice";
+import { deleteGoal } from "../../redux/slices/goalSlice";
 import { useDispatch } from "react-redux";
 import EditGoalForm from "../editGoalForm/EditGoalForm";
 import { useState } from "react";
+import {
+  useDecrementGoalScoreMutation,
+  useIncrementGoalScoreMutation,
+} from "../../redux/slices/goalsApi";
 
-function Goal({ goal }) {
+function Goal({ goal, currentUser }) {
   const [showEditGoalForm, setShowEditGoalForm] = useState(false);
+  const [isComplete, setIsComplete] = useState(
+    goal.score.max === goal.score.actual
+  );
   const dispatch = useDispatch();
   const goalWrapperClasses = `goal ${goal.isComplete ? "goal--completed" : ""}`;
+  const [setDecrementGoalScore] = useDecrementGoalScoreMutation();
+  const [setIncrementGoalScore] = useIncrementGoalScoreMutation();
 
   function onEditFormOpenHandler() {
     setShowEditGoalForm(true);
@@ -27,8 +32,8 @@ function Goal({ goal }) {
       <div className="score">
         <button
           className="score__decrease"
-          onClick={() => dispatch(decrementScore(goal))}
-          disabled={goal.score.actual === goal.score.min || goal.isComplete}>
+          onClick={() => setDecrementGoalScore({ goal, currentUser })}
+          disabled={goal.score.actual === goal.score.min || isComplete}>
           -
         </button>
         <span className="score__actual">{goal.score.actual}</span>
@@ -36,8 +41,8 @@ function Goal({ goal }) {
         <span className="score__toReach">{goal.score.max}</span>
         <button
           className="score__increase"
-          onClick={() => dispatch(incrementScore(goal))}
-          disabled={goal.score.actual === goal.score.max || goal.isComplete}>
+          onClick={() => setIncrementGoalScore({ goal, currentUser })}
+          disabled={goal.score.actual === goal.score.max || isComplete}>
           +
         </button>
         <button

@@ -43,7 +43,7 @@ function Goals() {
       {isError && <div>Server error. Try again later.</div>}
       {isSuccess && goals ? (
         goals.map((goal) => {
-          return <Goal key={goal.id} goal={goal} />;
+          return <Goal key={goal.id} goal={goal} currentUser={currentUser} />;
         })
       ) : (
         <div>

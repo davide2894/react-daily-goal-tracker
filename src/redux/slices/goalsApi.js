@@ -1,21 +1,20 @@
 // src/features/scores/scoresSlice.ts
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
-  arrayUnion,
   collection,
   doc,
-  getDoc,
   updateDoc,
   getDocs,
   setDoc,
+  increment,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
 export const firestoreApi = createApi({
   baseQuery: fakeBaseQuery(),
   tagTypes: ["Goals"],
-  endpoints: (build) => ({
-    fetchGoals: build.query({
+  endpoints: (builder) => ({
+    fetchGoals: builder.query({
       async queryFn(user) {
         try {
           let goals = [];
@@ -34,18 +33,15 @@ export const firestoreApi = createApi({
       },
       providesTags: ["Goals"],
     }),
-    addGoal: build.mutation({
+    addGoal: builder.mutation({
       async queryFn({ newGoal, currentUser }) {
         try {
-          await setDoc(
-            doc(
-              db,
-              `/users/${currentUser.userDocId}/user-goals/`,
-              newGoal.title
-            ),
-            newGoal,
-            { merge: true }
+          const docRef = doc(
+            db,
+            `/users/${currentUser.userDocId}/user-goals/`,
+            newGoal.title
           );
+          await setDoc(docRef, newGoal, { merge: true });
           console.log(newGoal);
           return { data: newGoal };
         } catch (err) {
@@ -55,7 +51,52 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
+    decrementGoalScore: builder.mutation({
+      async queryFn({ goal, currentUser }) {
+        try {
+          const docRef = doc(
+            db,
+            `/users/${currentUser.userDocId}/user-goals/`,
+            goal.title
+          );
+          await updateDoc(docRef, {
+            "score.actual": increment(-1),
+          });
+          return { data: "ok" };
+        } catch (err) {
+          return { error: err };
+        }
+      },
+      invalidatesTags: ["Goals"],
+    }),
+    incrementGoalScore: builder.mutation({
+      async queryFn({ goal, currentUser }) {
+        try {
+          console.log({ goal, currentUser });
+          const docRef = doc(
+            db,
+            `/users/${currentUser.userDocId}/user-goals/`,
+            goal.title
+          );
+          await updateDoc(docRef, {
+            "score.actual": increment(1),
+          });
+          // find goal document that matches goal id
+          // update that goal score by 1
+          // return goal
+          return { data: "ok" };
+        } catch (err) {
+          return { error: err };
+        }
+      },
+      invalidatesTags: ["Goals"],
+    }),
   }),
 });
 
-export const { useFetchGoalsQuery, useAddGoalMutation } = firestoreApi;
+export const {
+  useFetchGoalsQuery,
+  useAddGoalMutation,
+  useDecrementGoalScoreMutation,
+  useIncrementGoalScoreMutation,
+} = firestoreApi;
