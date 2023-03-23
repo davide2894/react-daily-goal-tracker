@@ -1,10 +1,10 @@
 import "./Goal.scss";
 import { deleteGoal } from "../../redux/slices/goalSlice";
-import { useDispatch } from "react-redux";
 import EditGoalForm from "../editGoalForm/EditGoalForm";
 import { useState } from "react";
 import {
   useDecrementGoalScoreMutation,
+  useDeleteGoalMutation,
   useIncrementGoalScoreMutation,
 } from "../../redux/slices/goalsApi";
 
@@ -13,10 +13,10 @@ function Goal({ goal, currentUser }) {
   const [isComplete, setIsComplete] = useState(
     goal.score.max === goal.score.actual
   );
-  const dispatch = useDispatch();
   const goalWrapperClasses = `goal ${goal.isComplete ? "goal--completed" : ""}`;
   const [setDecrementGoalScore] = useDecrementGoalScoreMutation();
   const [setIncrementGoalScore] = useIncrementGoalScoreMutation();
+  const [deleteGoal] = useDeleteGoalMutation();
 
   function onEditFormOpenHandler() {
     setShowEditGoalForm(true);
@@ -54,7 +54,7 @@ function Goal({ goal, currentUser }) {
         <button
           className="score__cta score__cta--delete"
           disabled={goal.isComplete}
-          onClick={() => dispatch(deleteGoal(goal))}>
+          onClick={() => deleteGoal({ goal, currentUser })}>
           ***DELETE***
         </button>
         {showEditGoalForm && (

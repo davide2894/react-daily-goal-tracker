@@ -7,6 +7,7 @@ import {
   getDocs,
   setDoc,
   increment,
+  deleteDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -97,7 +98,7 @@ export const firestoreApi = createApi({
             updatedGoalData.originalTitle
           );
           await updateDoc(docRef, {
-            "score.max": updatedGoalData.newMaxScore,
+            "score.max": increment(1),
             title: updatedGoalData.newTitle,
             // problema:
             // quando aggiorno un obiettivo, se aggiorno il titolo, poi questo nuovo titolo
@@ -115,6 +116,19 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
+    deleteGoal: builder.mutation({
+      async queryFn({ goal, currentUser }) {
+        try {
+          await deleteDoc(
+            doc(db, `/users/${currentUser.userDocId}/user-goals/`, goal.title)
+          );
+          return { data: goal };
+        } catch (err) {
+          return { error: err };
+        }
+      },
+      invalidatesTags: ["Goals"],
+    }),
   }),
 });
 
@@ -124,4 +138,5 @@ export const {
   useEditGoalMutation,
   useDecrementGoalScoreMutation,
   useIncrementGoalScoreMutation,
+  useDeleteGoalMutation,
 } = firestoreApi;
