@@ -124,9 +124,9 @@ Ideally, this project should use
                 [x] creare user and goals data structure
                 [x] decrement
                 [x] increment
-                [] edit goal
-                [] delete goal
-                [] reset goal score button (to add)
+                [x] delete goal
+                [x] reset goal score button (to add)
+                [] edit goal -> fix
                 [] avoid double click on same button to avoid unwanted effects. maybe need to wrap click inside useEffect??? useRef maybe??
                 https://bobbyhadz.com/blog/react-prevent-multiple-button-clicks
         [] homepage
