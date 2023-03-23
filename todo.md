@@ -113,15 +113,22 @@ Ideally, this project should use
                 [x] enable user to login
             [x] register
                 [x] enable user to register
-            [] on landing
-                [] if user is logged
-                    [] show welcome message with user.name
-                    [] show goals route
-                [] if user is not logged
-                    [] show my account to let user register or logged
+            [x] on landing
+                [x] if user is logged
+                    [x] show welcome message with user.name
+                    [x] show goals route
+                [x] if user is not logged
+                    [x] show my account to let user register or logged
         [] associate goals to logged user
             [] firestore
-                [] creare user and goals data structure
+                [x] creare user and goals data structure
+                [x] decrement
+                [x] increment
+                [] edit goal
+                [] delete goal
+                [] reset goal score button (to add)
+                [] avoid double click on same button to avoid unwanted effects. maybe need to wrap click inside useEffect??? useRef maybe??
+                https://bobbyhadz.com/blog/react-prevent-multiple-button-clicks
         [] homepage
             [] if user is logged
                 [] don't show my account button
