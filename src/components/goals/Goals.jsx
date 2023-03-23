@@ -8,36 +8,40 @@ import { useNavigate } from "react-router-dom";
 import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
 
 function Goals() {
-  const goals = useSelector((state) => state.goalReducer.goals);
+  // const goals = useSelector((state) => state.goalReducer.goals);
   const currentUser = useSelector((state) => state.userReducer.user);
   const navigate = useNavigate();
-  const { data, isLoading, isError } = useFetchGoalsQuery(currentUser);
-  const x = "";
-
-  //TODO:
-  // - use goals fetched from firestore to fill state
-  // - remove hardcoded goals from initialstate slice
+  const {
+    data: goals,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useFetchGoalsQuery(currentUser);
 
   function handleSignOut() {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
         console.log("user was successfully signed out");
         navigate("/");
       })
       .catch((error) => {
-        // An error happened.
         console.error(error.message);
       });
   }
 
+  if (isSuccess) {
+    console.log({ isSuccess: goals });
+  }
+
   return (
     <div className="goals">
-      <button className="cta cta__signOut" onClick={handleSignOut}>
+      <button className="cta cta_ _signOut" onClick={handleSignOut}>
         Sign Out
       </button>
       <p>Goals</p>
       <NewGoalButton />
+      {isLoading && <div>Loading...</div>}
+      {isError && <div>Server error. Try again later.</div>}
       {goals &&
         goals.map((goal, idx) => {
           return <Goal key={idx} goal={goal} />;
