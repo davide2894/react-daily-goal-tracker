@@ -41,10 +41,16 @@ function Goals() {
       <NewGoalButton />
       {isLoading && <div>Loading...</div>}
       {isError && <div>Server error. Try again later.</div>}
-      {goals &&
+      {goals > 0 ? (
         goals.map((goal, idx) => {
           return <Goal key={idx} goal={goal} />;
-        })}
+        })
+      ) : (
+        <div>
+          oops! it appears you don't have any goals yet. start your growing
+          journey now!
+        </div>
+      )}
     </div>
   );
 }
