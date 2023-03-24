@@ -42,14 +42,14 @@ Ideally, this project should use
 
 ### [] frontend
 
-#### [] main logic and structuire
+#### [x] main logic and structuire
 
         [x] homepage
             [x] welcome message
             [x] cta to go to the goals page when clicked
             [x] cta to register (to add later when i develop the user management backend logic)
             [x] cta to login (to add later when i develop the user management backend logic)
-        [] goals page
+        [x] goals page
             [x] goals list
                 [x] state: goalsList
                     [x] set initial state
@@ -57,7 +57,7 @@ Ideally, this project should use
                 [x] user interactions
                     - onGoalIncrement -> setGoalsList +1
                     - onGoalDecrement -> setGoalsList by removing goal
-            [] goal tracker component
+            [x] goal tracker component
                 - state:
                     - goalCount
                 - key=uniqueId (da capire come renderlo unico se gli obiettivi li creo a mano, e non mi arrivano da un'api). L'importante è che l'id non arrivi
@@ -104,11 +104,11 @@ Ideally, this project should use
                 [x] delete goal btn
                     [x] clicking on this button should delete the matching goal item in global goals state array
                     [x] regression test on goal lists
-            [] landing: keep track of all the added goal, which means: persist goal data on page reload
+            [x] landing: keep track of all the added goal, which means: persist goal data on page reload
 
 ### [] backend
 
-        [] myaccount
+        [x] myaccount
             [x] login
                 [x] enable user to login
             [x] register
@@ -126,34 +126,40 @@ Ideally, this project should use
                 [x] increment
                 [x] delete goal
                 [x] reset goal score button (to add)
-                [] edit goal -> fix
+                [x] edit goal -> fix
                 [] avoid double click on same button to avoid unwanted effects. maybe need to wrap click inside useEffect??? useRef maybe??
+                [] fix lag between click and count increase
                 https://bobbyhadz.com/blog/react-prevent-multiple-button-clicks
         [] homepage
             [] if user is logged
-                [] don't show my account button
-                [] show sign out button
-                [] show goals route only to logged user
+                [x] don't show my account button
+                [x] show sign out button
+                [x] show goals route only to logged user
                 [] goals functionalities provided via firebase and saved through firestore
-                    [] retrieve goals from user document (firestore)
-                    [] add goal: update goals subcollection for that specific user document (firestore)
-                    [] remove goal: remove goals subcollection for that specific user document (firestore)
+                    [x] retrieve goals from user document (firestore)
+                    [x] add goal: update goals subcollection for that specific user document (firestore)
+                    [x] remove goal: remove goals subcollection for that specific user document (firestore)
                     [] update goal: update goal in goal subcollection for that specific user document (firestore)
-            [] if user doesn't exist
+            [x] if user doesn't exist
                 -> show link to myAccount page
-        [] my account on hover
-            [] open my account layer with login and register cta
-            [] click on login cta
+        [x] my account on hover
+            [x] open my account layer with login and register cta
+            [x] click on login cta
                 -> if user exists -> go to login page
                 -> if user doesn't exist -> go to register page
 
-## [] unit
+## [] unit tests
 
-    [] develop first unit test on goal addition
-    [] develop first unit test on goal modification
-    [] develop first unit test on goal deletion
-    [] develop first unit test on user registration
-    [] develop first unit test on user login
+    [] components
+        [] login
+        [] register
+        [] goals
+    [] firestore cloud functions
+        [] unit test on goal addition
+        [] unit test on goal modification
+        [] unit test on goal deletion
+        [] unit test on user registration
+        [] unit test on user login
 
 #### [] style
 
