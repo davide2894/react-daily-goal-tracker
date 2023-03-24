@@ -1,9 +1,20 @@
-import { login } from "../../redux/slices/userSlice";
 import Login from "./Login";
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
+import renderer from "react-test-renderer";
 
-test("should render Login component", () => {
+afterEach(() => {
+  cleanup();
+});
+
+test("Login component renders correctly", () => {
   render(<Login />);
   const loginComponentWrapper = screen.getByTestId("test");
   expect(loginComponentWrapper).toBeInTheDocument();
+  expect(loginComponentWrapper).toHaveClass("myAccount__form");
+  expect(loginComponentWrapper).toHaveClass("myAccount__form--login");
+});
+
+test("Login component matches its own snapshot", () => {
+  const tree = renderer.create(<Login />).toJSON();
+  expect(tree).toMatchSnapshot();
 });
