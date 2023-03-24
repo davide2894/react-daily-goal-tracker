@@ -19,7 +19,7 @@ function Login() {
   }
 
   return (
-    <div className="myAccount__form myAccount__form--login">
+    <div data-testid="test" className="myAccount__form myAccount__form--login">
       <p>Login if you have already an account</p>
       <br></br>
       <form onSubmit={handleSubmit}>
