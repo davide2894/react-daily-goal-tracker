@@ -98,7 +98,7 @@ export const firestoreApi = createApi({
             updatedGoalData.id
           );
           await updateDoc(docRef, {
-            "score.max": parseInt(updatedGoalData.newMax),
+            "score.max": parseInt(updatedGoalData.newMaxScore),
             title: updatedGoalData.newTitle,
           });
           return { data: updatedGoalData };
