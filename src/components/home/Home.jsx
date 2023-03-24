@@ -12,7 +12,6 @@ function Home() {
   const [isUserLogged, setIsUserLogged] = useState("");
   const dispatch = useDispatch();
 
-  // check user
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
