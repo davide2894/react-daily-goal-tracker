@@ -40,7 +40,7 @@ export const firestoreApi = createApi({
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,
-            newGoal.title
+            newGoal.id
           );
           await setDoc(docRef, newGoal, { merge: true });
           console.log(newGoal);
@@ -58,7 +58,7 @@ export const firestoreApi = createApi({
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,
-            goal.title
+            goal.id
           );
           await updateDoc(docRef, {
             "score.actual": increment(-1),
@@ -77,7 +77,7 @@ export const firestoreApi = createApi({
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,
-            goal.title
+            goal.id
           );
           await updateDoc(docRef, {
             "score.actual": increment(1),
@@ -95,19 +95,11 @@ export const firestoreApi = createApi({
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,
-            updatedGoalData.originalTitle
+            updatedGoalData.id
           );
           await updateDoc(docRef, {
             "score.max": increment(1),
             title: updatedGoalData.newTitle,
-            // problema:
-            // quando aggiorno un obiettivo, se aggiorno il titolo, poi questo nuovo titolo
-            // viene usato come discriminante nell'increment, per cercare il goal
-            // questo perché i goal hanno come id il goal title
-            // todo:
-            // devo trovare un nuovo id per il documento del goal,
-            // che non può essere il title, altrimenti, come si è visto
-            // ho creato del coupling che rende l'applicazione instabile
           });
           return { data: updatedGoalData };
         } catch (err) {
@@ -120,7 +112,7 @@ export const firestoreApi = createApi({
       async queryFn({ goal, currentUser }) {
         try {
           await deleteDoc(
-            doc(db, `/users/${currentUser.userDocId}/user-goals/`, goal.title)
+            doc(db, `/users/${currentUser.userDocId}/user-goals/`, goal.id)
           );
           return { data: goal };
         } catch (err) {
@@ -135,7 +127,7 @@ export const firestoreApi = createApi({
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,
-            goal.title
+            goal.id
           );
           await updateDoc(docRef, {
             "score.actual": 0,
