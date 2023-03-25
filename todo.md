@@ -130,16 +130,16 @@ Ideally, this project should use
                 [] avoid double click on same button to avoid unwanted effects. maybe need to wrap click inside useEffect??? useRef maybe??
                 [] fix lag between click and count increase
                 https://bobbyhadz.com/blog/react-prevent-multiple-button-clicks
-        [] homepage
-            [] if user is logged
+        [x] homepage
+            [x] if user is logged
                 [x] don't show my account button
                 [x] show sign out button
                 [x] show goals route only to logged user
-                [] goals functionalities provided via firebase and saved through firestore
+                [x] goals functionalities provided via firebase and saved through firestore
                     [x] retrieve goals from user document (firestore)
                     [x] add goal: update goals subcollection for that specific user document (firestore)
                     [x] remove goal: remove goals subcollection for that specific user document (firestore)
-                    [] update goal: update goal in goal subcollection for that specific user document (firestore)
+                    [x] update goal: update goal in goal subcollection for that specific user document (firestore)
             [x] if user doesn't exist
                 -> show link to myAccount page
         [x] my account on hover
@@ -151,9 +151,11 @@ Ideally, this project should use
 ## [] unit tests
 
     [] components
-        [] login
-        [] register
-        [] goals
+        [x] login
+        [x] register
+        [] goal
+            [] check that if goal.isComplete then it must have complete class added
+            [] goal.score.actual should have same value than score html element text value
     [] firestore cloud functions
         [] unit test on goal addition
         [] unit test on goal modification
@@ -181,3 +183,13 @@ Ideally, this project should use
     [] migrate all of the code to TypeScript
     [] test that everything works accordingly
     [] push all the new codde
+
+# [] check this error out when trying to edit goal max score
+
+Warning: A component is changing a controlled input to be uncontrolled. This is likely caused by the value changing from a defined to undefined, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime
+
+# [] cleanup
+
+    [] remove console.logs
+    [] remove firestore credentials from repo
+    [] remove todo from commited file
