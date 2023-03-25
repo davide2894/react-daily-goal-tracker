@@ -154,8 +154,8 @@ Ideally, this project should use
         [x] login
         [x] register
         [] goal
-            [] check that if goal.isComplete then it must have complete class added
-            [] goal.score.actual should have same value than score html element text value
+            [] test prop: check that if goal.isComplete then it must have complete class added
+            [] test prop: goal.score.actual should have same value than score html element text value
     [] firestore cloud functions
         [] unit test on goal addition
         [] unit test on goal modification
