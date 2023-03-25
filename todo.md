@@ -154,14 +154,15 @@ Ideally, this project should use
         [x] login
         [x] register
         [] goal
-            [] test prop: check that if goal.isComplete then it must have complete class added
-            [] test prop: goal.score.actual should have same value than score html element text value
-    [] firestore cloud functions
-        [] unit test on goal addition
-        [] unit test on goal modification
-        [] unit test on goal deletion
-        [] unit test on user registration
-        [] unit test on user login
+            [x] test prop: check that if goal.isComplete then it must have complete class added
+            [] when delete a goal -> goals state should reflect that
+            [] unit test
+        [] newGoalButton
+            [] when click on goal add button, the goal modal shows up with
+            [] submit form -> new goal added to goals
+        [] user
+            [] on user registration -> user is logged in
+            [] when user logs in -> user is shown (???)
 
 #### [] style
 
