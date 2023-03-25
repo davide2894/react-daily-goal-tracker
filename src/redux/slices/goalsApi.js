@@ -43,7 +43,6 @@ export const firestoreApi = createApi({
             newGoal.id
           );
           await setDoc(docRef, newGoal, { merge: true });
-          console.log(newGoal);
           return { data: newGoal };
         } catch (err) {
           console.log({ error: err });
@@ -82,6 +81,12 @@ export const firestoreApi = createApi({
           await updateDoc(docRef, {
             "score.actual": increment(1),
           });
+          const newActualScore = goal.score.actual + 1;
+          if (newActualScore === goal.score.max) {
+            await updateDoc(docRef, {
+              isComplete: true,
+            });
+          }
           return { data: goal };
         } catch (err) {
           return { error: err };
@@ -131,6 +136,7 @@ export const firestoreApi = createApi({
           );
           await updateDoc(docRef, {
             "score.actual": 0,
+            isComplete: false,
           });
           return { data: goal };
         } catch (err) {

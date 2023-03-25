@@ -34,7 +34,7 @@ function Goal({ goal, currentUser }) {
         <button
           className="score__decrease"
           onClick={() => setDecrementGoalScore({ goal, currentUser })}
-          disabled={goal.score.actual === goal.score.min || isComplete}>
+          disabled={goal.score.actual === goal.score.min || goal.isComplete}>
           -
         </button>
         <span className="score__actual">{goal.score.actual}</span>
@@ -43,7 +43,8 @@ function Goal({ goal, currentUser }) {
         <button
           className="score__increase"
           onClick={() => setIncrementGoalScore({ goal, currentUser })}
-          disabled={goal.score.actual === goal.score.max || isComplete}>
+          dataScore={goal.isComplete}
+          disabled={goal.score.actual === goal.score.max || goal.isComplete}>
           +
         </button>
         <button
@@ -54,7 +55,6 @@ function Goal({ goal, currentUser }) {
         </button>
         <button
           className="score__cta score__cta--delete"
-          disabled={goal.isComplete}
           onClick={() => deleteGoal({ goal, currentUser })}>
           ***DELETE***
         </button>
