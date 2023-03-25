@@ -9,13 +9,21 @@ afterEach(() => {
 const goal = {
   id: "ed04edbb-8ced-4cdf-a629-c7a57bd5824e",
   isComplete: false,
-  title: "sqsq",
+  title: "test goal",
   score: {
     max: 5,
     actual: 1,
     min: 0,
   },
 };
+
+const conpletedGoal = {
+  ...goal,
+  isComplete: true,
+};
+
+console.log({ conpletedGoal });
+
 const currentUser = {
   email: "testcurrentuseremailforreact@yopmail.com",
   uid: "bbgQNkAxgEZrxB5ZkEXZIAdZARB2",
@@ -23,9 +31,16 @@ const currentUser = {
     "testcurrentuseremailforreact@yopmail.com-bbgQNkAxgEZrxB5ZkEXZIAdZARB2",
 };
 
-test("Goal component renders correctly", () => {
+test("Goal component renders correctly with its class", () => {
   renderWithProviders(<Goal goal={goal} currentUser={currentUser} />);
   const goalComponentWrapper = screen.getByTestId("goalTest");
   expect(goalComponentWrapper).toBeInTheDocument();
   expect(goalComponentWrapper).toHaveClass("goal");
+});
+
+test("If goal prop has goal.isComplete field value, then Goal component should have goal--completed class", () => {
+  renderWithProviders(<Goal goal={conpletedGoal} currentUser={currentUser} />);
+  const goalComponentWrapper = screen.getByTestId("goalTest");
+  expect(goalComponentWrapper).toBeInTheDocument();
+  expect(goalComponentWrapper).toHaveClass("goal--completed");
 });
