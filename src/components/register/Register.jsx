@@ -12,7 +12,9 @@ function Register() {
   }
 
   return (
-    <div className="myAccount__form myAccount__form--register">
+    <div
+      data-testid="registerComponentTestElement"
+      className="myAccount__form myAccount__form--register">
       <p>First time here? Register an account to start setting goals! </p>
       <br></br>
       <form onSubmit={handleSubmit}>
