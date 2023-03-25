@@ -8,7 +8,7 @@ afterEach(() => {
 
 test("Login component renders correctly", () => {
   render(<Login />);
-  const loginComponentWrapper = screen.getByTestId("test");
+  const loginComponentWrapper = screen.getByTestId("loginComponentTest");
   expect(loginComponentWrapper).toBeInTheDocument();
   expect(loginComponentWrapper).toHaveClass("myAccount__form");
   expect(loginComponentWrapper).toHaveClass("myAccount__form--login");

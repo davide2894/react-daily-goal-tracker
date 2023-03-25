@@ -20,7 +20,7 @@ function Login() {
 
   return (
     <div
-      data-testid="test"
+      data-testid="loginComponentTest"
       className="hi myAccount__form myAccount__form--login">
       <p>Login if you have already an account</p>
       <br></br>
