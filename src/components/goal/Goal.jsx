@@ -10,10 +10,9 @@ import {
 
 function Goal({ goal, currentUser }) {
   const [showEditGoalForm, setShowEditGoalForm] = useState(false);
-  const [isComplete, setIsComplete] = useState(
-    goal.score.max === goal.score.actual
-  );
-  const goalWrapperClasses = `goal ${goal.isComplete ? "goal--completed" : ""}`;
+  const goalWrapperClasses = `goal ${
+    goal && goal.isComplete ? "goal--completed" : ""
+  }`;
   const [setDecrementGoalScore] = useDecrementGoalScoreMutation();
   const [setIncrementGoalScore] = useIncrementGoalScoreMutation();
   const [deleteGoal] = useDeleteGoalMutation();
@@ -28,7 +27,7 @@ function Goal({ goal, currentUser }) {
   }
 
   return (
-    <div className={goalWrapperClasses}>
+    <div data-testid="goalTest" className={goalWrapperClasses}>
       <p className="goal__title">{goal.title}</p>
       <div className="score">
         <button
@@ -43,7 +42,6 @@ function Goal({ goal, currentUser }) {
         <button
           className="score__increase"
           onClick={() => setIncrementGoalScore({ goal, currentUser })}
-          dataScore={goal.isComplete}
           disabled={goal.score.actual === goal.score.max || goal.isComplete}>
           +
         </button>
