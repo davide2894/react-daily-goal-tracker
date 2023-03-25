@@ -1,4 +1,4 @@
-import Login from "./Login";
+import Login from "../Login";
 import { render, screen, cleanup } from "@testing-library/react";
 import renderer from "react-test-renderer";
 
