@@ -1,4 +1,5 @@
-@use "../../common/common.scss" as *;
+@use "../../scss/core" as *;
+@use "../../scss/common/forms.scss" as *;
 
 .myAccount {
   margin-top: $space25;
@@ -8,7 +9,6 @@
 
   &__form {
     min-width: 250px;
-    border: 1px solid black;
 
     &--register {
       margin-right: $space25;

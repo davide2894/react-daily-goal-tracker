@@ -1,0 +1,79 @@
+@use "../core/variables/index" as *;
+/**
+*Those Vars
+*/
+
+//$curve: cubic-bezier(0, 0, 0.52, 1.11);
+$curve: linear;
+
+.form {
+  width: 400px;
+  margin: 0 auto;
+  text-align: left;
+
+  label {
+    display: block;
+    text-align: left;
+    color: white;
+  }
+
+  form {
+    .text-input {
+      overflow: hidden;
+      margin-bottom: 0.875em;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 1em 0 12px;
+      padding-left: 0;
+      background: none;
+      color: white;
+      font-weight: 400;
+      border: none;
+      border-bottom: 1px solid $periwinkle-gray;
+
+      /*Some sibling magic happens */
+      &:focus + .separator {
+        transform: scaleX(1) translateY(-2px);
+        opacity: 1;
+      }
+    }
+
+    input[type="submit"] {
+      color: white;
+      padding: 1em 1.4em;
+      border: none;
+      border-radius: 10px;
+    }
+  }
+}
+
+.separator {
+  height: 3px;
+  width: 100%;
+  background: $feta;
+  display: block;
+  transform: scaleX(0) translateY(-2px);
+  transform-origin: 50%;
+  opacity: 0;
+  transition: all 0.15s $curve;
+}
+
+/**
+* Form Reset - remove focus highlighting
+*/
+
+* :focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.form-bottom {
+  margin-top: 1.25em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
