@@ -21,30 +21,31 @@ function Login() {
   return (
     <div
       data-testid="loginComponentTest"
-      className="hi myAccount__form myAccount__form--login">
+      className="hi myAccount__form myAccount__form--login form">
       <p>Login if you have already an account</p>
       <br></br>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
-          <label>Email</label>
+          <label for="loginFormEmailInput">Email</label>
           <input
-            type="text"
+            type="email"
             name="email"
+            id="loginFormEmailInput"
             value={email}
             onChange={(evt) => handleEmailChange(evt)}
           />
         </div>
         <div className="form-control">
-          <label>Password</label>
+          <label for="loginFormPassword">Password</label>
           <input
             type="password"
             name="password"
+            id="loginFormPassword"
             value={password}
             onChange={(evt) => handlePasswordChange(evt)}
           />
         </div>
         <div className="form-control">
-          <label></label>
           <button type="submit">Login</button>
         </div>
       </form>

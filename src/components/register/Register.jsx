@@ -14,35 +14,38 @@ function Register() {
   return (
     <div
       data-testid="registerComponentTestElement"
-      className="myAccount__form myAccount__form--register">
+      className="myAccount__form myAccount__form--register form">
       <p>First time here? Register an account to start setting goals! </p>
       <br></br>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
-          <label>Name</label>
+          <label for="registrationFormNameInput">Name</label>
           <input
             type="text"
             name="name"
+            id="registrationFormNameInput"
             placeholder="Enter name"
             value={name}
             onChange={(evt) => setName(evt.target.value)}
           />
         </div>
         <div className="form-control">
-          <label>Email</label>
+          <label for="registrationFormEmailInput">Email</label>
           <input
-            type="text"
+            type="email"
             name="email"
+            id="registrationFormEmailInput"
             placeholer="Enter email"
             value={email}
             onChange={(evt) => setEmail(evt.target.value)}
           />
         </div>
         <div className="form-control">
-          <label>Password</label>
+          <label for="registrationFormPasswordInput">Password</label>
           <input
             type="password"
             name="password"
+            input="registrationFormPasswordInput"
             placeholder="Enter password"
             value={password}
             onChange={(evt) => setPassword(evt.target.value)}
