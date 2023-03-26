@@ -168,16 +168,28 @@ Ideally, this project should use
 
 #### [] style
 
-    [] home
-        [] goals cta
-        [] register cta
-        [] login cta
-    [] goals page
-        [] goal component
-        [] add goal btn
-        [] goal form
-    [] register page
-    [] login page
+    [] mobile
+        [x] home
+        [] goals page
+            [] goal component
+                [x] ctas
+                [] extra - ... - layer that on hover shows little layer with
+                    - edit btn
+                    - delete btn
+                    - reset btn
+                [] edit btn: add tooltip with label
+                [] delete btn: add tooltip with label
+                [] reset btn: add tooltip with label
+            [] add goal btn
+            [] goal form
+        [] signout button
+    [] adapt to table
+    [] adapt to desktp
+    [] scss bugfix: fix too many imports appear in styles tab on browsers. Something in the way I import style file is wrong
+    [] backend bugfix: edit button -> goes NaN when press edit submit button on form without changing current number, with score field already filled with actual max score
+    [] loader:
+        [] while firestore operation is performing -> show loader
+        [] while firestore operation is performing -> hide loader
 
 # [] test
 
