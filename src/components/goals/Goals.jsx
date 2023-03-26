@@ -34,7 +34,7 @@ function Goals() {
 
   return (
     <div className="goals">
-      <button className="cta cta_ _signOut" onClick={handleSignOut}>
+      <button className="cta cta__signOut" onClick={handleSignOut}>
         Sign Out
       </button>
       <p>Goals</p>

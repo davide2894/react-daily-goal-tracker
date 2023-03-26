@@ -1,9 +1,10 @@
-@use "../../scss/core/" as *;
+@use "../../scss/core" as *;
 
 .goal {
   margin: $space25 auto 0;
   align-self: flex-start;
   text-align: left;
+  font-size: rem(24px);
 
   &--completed {
     background-color: palegreen;
@@ -12,10 +13,78 @@
   &__title {
     margin-bottom: $space16;
   }
+
+  &__button {
+    @extend %reset-button;
+  }
+
+  &__buttonIcon {
+    &:before {
+      content: "";
+      display: block;
+      width: 55px;
+      height: 55px;
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    &--edit {
+      &:before {
+        background-image: url("../../assets/edit-button.svg");
+      }
+    }
+    &--delete {
+      &:before {
+        background-image: url("../../assets/delete-button.svg");
+      }
+    }
+    &--reset {
+      &:before {
+        background-image: url("../../assets/reset-button.svg");
+      }
+    }
+  }
 }
 
 .score {
-  &__cta {
+  &__button {
     margin-left: $space25;
+
+    &:after,
+    &:before {
+      content: "";
+      display: block;
+      background-color: grey;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &--increase,
+    &--decrease {
+      border: 2px solid lightgrey;
+      background-color: $coconut-cream;
+      font-size: 16px;
+      height: 2.5em;
+      width: 2.5em;
+      border-radius: 999px;
+      position: relative;
+
+      &:after {
+        height: 0.2em;
+        width: 1em;
+      }
+
+      &:before {
+        width: 0.2em;
+      }
+    }
+
+    &--increase {
+      &:before {
+        height: 1em;
+      }
+    }
   }
 }
