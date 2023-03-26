@@ -19,7 +19,7 @@ function Register() {
       <br></br>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
-          <label for="registrationFormNameInput">Name</label>
+          <label htmlFor="registrationFormNameInput">Name</label>
           <input
             type="text"
             name="name"
@@ -28,9 +28,10 @@ function Register() {
             value={name}
             onChange={(evt) => setName(evt.target.value)}
           />
+          <span className="separator"> </span>
         </div>
         <div className="form-control">
-          <label for="registrationFormEmailInput">Email</label>
+          <label htmlFor="registrationFormEmailInput">Email</label>
           <input
             type="email"
             name="email"
@@ -39,9 +40,10 @@ function Register() {
             value={email}
             onChange={(evt) => setEmail(evt.target.value)}
           />
+          <span className="separator"> </span>
         </div>
         <div className="form-control">
-          <label for="registrationFormPasswordInput">Password</label>
+          <label htmlFor="registrationFormPasswordInput">Password</label>
           <input
             type="password"
             name="password"
@@ -50,9 +52,9 @@ function Register() {
             value={password}
             onChange={(evt) => setPassword(evt.target.value)}
           />
+          <span className="separator"> </span>
         </div>
         <div className="form-control">
-          <label></label>
           <button type="submit">Register</button>
         </div>
       </form>

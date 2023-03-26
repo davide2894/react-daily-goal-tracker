@@ -26,7 +26,7 @@ function Login() {
       <br></br>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
-          <label for="loginFormEmailInput">Email</label>
+          <label htmlFor="loginFormEmailInput">Email</label>
           <input
             type="email"
             name="email"
@@ -34,9 +34,10 @@ function Login() {
             value={email}
             onChange={(evt) => handleEmailChange(evt)}
           />
+          <span className="separator"> </span>
         </div>
         <div className="form-control">
-          <label for="loginFormPassword">Password</label>
+          <label htmlFor="loginFormPassword">Password</label>
           <input
             type="password"
             name="password"
@@ -44,6 +45,7 @@ function Login() {
             value={password}
             onChange={(evt) => handlePasswordChange(evt)}
           />
+          <span className="separator"> </span>
         </div>
         <div className="form-control">
           <button type="submit">Login</button>
