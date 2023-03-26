@@ -7,6 +7,7 @@ function MyAccount() {
   return (
     <div className="myAccount">
       <Register />
+      or
       <Login />
     </div>
   );

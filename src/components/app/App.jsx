@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 import Home from "../home/Home";
 import MyAccount from "../myAccount/MyAccount";
@@ -6,7 +6,7 @@ import Goals from "../goals/Goals";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="goals" element={<Goals />}></Route>

@@ -155,11 +155,13 @@ Ideally, this project should use
         [x] register
         [] goal
             [x] test prop: check that if goal.isComplete then it must have complete class added
-            [] when delete a goal -> goals state should reflect that
-            [] unit test
+            [] when click on increment goal score
+                -> I expect score to increment by one
+            [] when click on decrement goal score
+                -> I expect score to decrement by one
         [] newGoalButton
             [] when click on goal add button, the goal modal shows up with
-            [] submit form -> new goal added to goals
+            [] submit form -> new goawl added to goals
         [] user
             [] on user registration -> user is logged in
             [] when user logs in -> user is shown (???)

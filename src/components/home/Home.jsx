@@ -36,8 +36,8 @@ function Home() {
         <Goals />
       ) : (
         <div className="home__welcomeMessage">
-          <p>Welcome to the goals app</p>
-          <p>Login or register to start working on your goals</p>
+          <p>Welcome to Daily Goal Tracker</p>
+          <p>Login or register start working on your goals</p>
           <MyAccount />
         </div>
       )}
