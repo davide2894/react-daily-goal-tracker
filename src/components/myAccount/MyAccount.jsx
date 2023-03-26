@@ -7,7 +7,9 @@ function MyAccount() {
   return (
     <div className="myAccount">
       <Register />
-      or
+      <div className="myAccount__separatorH2">
+        <h2>OR</h2>
+      </div>
       <Login />
     </div>
   );

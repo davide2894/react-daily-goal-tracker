@@ -1,5 +1,4 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
 import "./Home.scss";
 import MyAccount from "../myAccount/MyAccount";
 import { useEffect, useState } from "react";
@@ -36,8 +35,7 @@ function Home() {
         <Goals />
       ) : (
         <div className="home__welcomeMessage">
-          <p>Welcome to Daily Goal Tracker</p>
-          <p>Login or register start working on your goals</p>
+          <h1>WELCOME TO DAILY GOAL TRACKER</h1>
           <MyAccount />
         </div>
       )}

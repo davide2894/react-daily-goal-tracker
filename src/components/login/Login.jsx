@@ -22,7 +22,7 @@ function Login() {
     <div
       data-testid="loginComponentTest"
       className="hi myAccount__form myAccount__form--login form">
-      <p>Login if you have already an account</p>
+      <h2>Login if you have already an account</h2>
       <br></br>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
