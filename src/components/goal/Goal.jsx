@@ -35,7 +35,7 @@ function Goal({ goal, currentUser }) {
           <span className="score__separator">/</span>
           <span className="score__toReach">{goal.score.max}</span>
         </div>
-        <div className="score_ctas">
+        <div className="score__ctas">
           <button
             className="score__button score__button--decrease"
             onClick={() => setDecrementGoalScore({ goal, currentUser })}
@@ -49,31 +49,33 @@ function Goal({ goal, currentUser }) {
               goal.score.actual === goal.score.max || goal.isComplete
             }></button>
         </div>
-        <button
-          className="goal__button goal__button--edit"
-          disabled={goal.isComplete}
-          onClick={onEditFormOpenHandler}>
-          <span className="goal__buttonIcon goal__buttonIcon--edit"></span>
-        </button>
-        <button
-          className="goal__button goal__button--delete"
-          onClick={() => deleteGoal({ goal, currentUser })}>
-          <span className="goal__buttonIcon goal__buttonIcon--delete"></span>
-        </button>
-        <button
-          className="goal__button goal__button--reset"
-          disabled={goal.score.actual === 0}
-          onClick={() => resetGoal({ goal, currentUser })}>
-          <span className="goal__buttonIcon goal__buttonIcon--reset"></span>
-        </button>
-        {showEditGoalForm && (
-          <EditGoalForm
-            onCloseProp={onEditFormCloseHandler}
-            goalTitleToEdit={goal.title}
-            goalScoreToEdit={goal.score}
-            id={goal.id}
-          />
-        )}
+        <div className="score__otherActionsWrapper">
+          <button
+            className="goal__button goal__button--edit"
+            disabled={goal.isComplete}
+            onClick={onEditFormOpenHandler}>
+            <span className="goal__buttonIcon goal__buttonIcon--edit"></span>
+          </button>
+          <button
+            className="goal__button goal__button--delete"
+            onClick={() => deleteGoal({ goal, currentUser })}>
+            <span className="goal__buttonIcon goal__buttonIcon--delete"></span>
+          </button>
+          <button
+            className="goal__button goal__button--reset"
+            disabled={goal.score.actual === 0}
+            onClick={() => resetGoal({ goal, currentUser })}>
+            <span className="goal__buttonIcon goal__buttonIcon--reset"></span>
+          </button>
+          {showEditGoalForm && (
+            <EditGoalForm
+              onCloseProp={onEditFormCloseHandler}
+              goalTitleToEdit={goal.title}
+              goalScoreToEdit={goal.score}
+              id={goal.id}
+            />
+          )}
+        </div>
       </div>
       <hr></hr>
     </div>
