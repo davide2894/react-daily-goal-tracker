@@ -19,8 +19,6 @@ function EditGoalForm({ onCloseProp, goalTitleToEdit, goalScoreToEdit, id }) {
       id: id,
     };
 
-    // call api endpoint to update goal
-
     editGoal({ updatedGoalData, currentUser });
     onCloseProp();
   }
