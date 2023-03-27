@@ -34,10 +34,13 @@ function Goals() {
 
   return (
     <div className="goals">
-      <button className="cta cta__signOut" onClick={handleSignOut}>
-        Sign Out
+      <button
+        className="cta cta__signOut"
+        onClick={handleSignOut}
+        title="sing out">
+        <span className="cta__signOutIcon"></span>
       </button>
-      <p>Goals</p>
+      <h1 className="goals__h1">Goals</h1>
       <NewGoalButton />
       {isLoading && <div>Loading...</div>}
       {isError && <div>Server error. Try again later.</div>}

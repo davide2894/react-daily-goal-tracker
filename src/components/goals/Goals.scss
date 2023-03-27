@@ -3,4 +3,33 @@
 .goals {
   display: flex;
   flex-direction: column;
+
+  &__h1 {
+    font-size: rem(25px);
+    text-align: center;
+    text-decoration: underline;
+    color: $white;
+  }
+}
+
+.cta {
+  &__signOut {
+    @extend %reset-button;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__signOutIcon {
+    &:before {
+      content: "";
+      display: block;
+      width: 55px;
+      height: 55px;
+      background-image: url("../../assets/signout-button.svg");
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
 }
