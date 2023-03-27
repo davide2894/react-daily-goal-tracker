@@ -8,7 +8,11 @@
   min-width: 100%;
 
   &--completed {
-    background-color: palegreen;
+    .score__button:not(.score__button--reset) {
+      pointer-events: none;
+    }
+
+    color: yellow;
   }
 
   &__title {
