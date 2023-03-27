@@ -1,0 +1,60 @@
+@use "../core/" as *;
+
+.modalOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $mine-shaft;
+  z-index: 3;
+
+  &__main {
+    margin: 100px auto;
+    padding: 20px;
+    background: $tundora;
+    border: 1px solid $mine-shaft;
+    border-radius: 6px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+
+  &__closeButton {
+    @extend %reset-button;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $space55;
+    height: $space55;
+  }
+
+  &__closeIcon {
+    &:before {
+      content: "";
+      display: block;
+      width: $space55;
+      height: $space55;
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("../../assets/close-button.svg");
+    }
+  }
+
+  &__content {
+    overflow: auto;
+  }
+
+  &__p {
+    margin: 0 0 1em;
+    text-align: center;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__form {
+    color: black;
+  }
+}

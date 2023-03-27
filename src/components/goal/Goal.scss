@@ -29,16 +29,19 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+
     &--edit {
       &:before {
         background-image: url("../../assets/edit-button.svg");
       }
     }
+
     &--delete {
       &:before {
         background-image: url("../../assets/delete-button.svg");
       }
     }
+
     &--reset {
       &:before {
         background-image: url("../../assets/reset-button.svg");

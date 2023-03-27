@@ -11,6 +11,11 @@ $curve: linear;
   margin: 0 auto;
   text-align: left;
 
+  h2 {
+    text-align: center;
+    margin-bottom: $space25;
+  }
+
   label {
     display: block;
     text-align: left;
@@ -40,6 +45,10 @@ $curve: linear;
         transform: scaleX(1) translateY(-2px);
         opacity: 1;
       }
+    }
+
+    input {
+      margin-bottom: $space25;
     }
 
     button[type="submit"] {
