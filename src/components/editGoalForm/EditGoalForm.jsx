@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useEditGoalMutation } from "../../redux/slices/goalsApi";
 import { useSelector } from "react-redux";
 
-function EditGoalForm({ onCloseProp, goalTitleToEdit, goalScoreToEdit, id }) {
-  const [goalTitle, setGoalTitle] = useState(goalTitleToEdit || "");
-  const [goalScore, setGoalScore] = useState(goalScoreToEdit || "");
+function EditGoalForm({ onCloseProp, id, titleToEdit, maxScoreToEdit }) {
+  const [newTitle, setNewTitle] = useState(titleToEdit || "");
+  const [newMaxScore, setNewMaxScore] = useState(maxScoreToEdit || "");
 
   const currentUser = useSelector((state) => state.userReducer.user);
   const [editGoal] = useEditGoalMutation();
@@ -13,9 +13,8 @@ function EditGoalForm({ onCloseProp, goalTitleToEdit, goalScoreToEdit, id }) {
     evt.preventDefault();
 
     const updatedGoalData = {
-      originalTitle: goalTitleToEdit,
-      newTitle: goalTitle,
-      newMaxScore: goalScore,
+      newTitle,
+      newMaxScore,
       id: id,
     };
 
@@ -37,9 +36,9 @@ function EditGoalForm({ onCloseProp, goalTitleToEdit, goalScoreToEdit, id }) {
                 type="text"
                 name="name"
                 id="nameInput"
-                value={goalTitle}
+                value={newTitle}
                 onChange={(evt) => {
-                  setGoalTitle(evt.target.value);
+                  setNewTitle(evt.target.value);
                 }}
               />
             </label>
@@ -51,9 +50,9 @@ function EditGoalForm({ onCloseProp, goalTitleToEdit, goalScoreToEdit, id }) {
                 type="number"
                 name="score"
                 id="scoreInput"
-                value={goalScore.max}
+                value={newMaxScore}
                 onChange={(evt) => {
-                  setGoalScore(evt.target.value);
+                  setNewMaxScore(evt.target.value);
                 }}
               />
             </label>
