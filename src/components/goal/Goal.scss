@@ -18,6 +18,21 @@
   &__button {
     @extend %reset-button;
   }
+}
+
+.score {
+  display: flex;
+
+  &__ctas,
+  &__numbers,
+  &__otherActionsWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button {
+    @extend %reset-button;
+  }
 
   &__buttonIcon {
     &:before {
@@ -28,6 +43,18 @@
       background-size: 20px;
       background-repeat: no-repeat;
       background-position: center;
+    }
+
+    &--decreaseScore {
+      &:before {
+        background-image: url("../../assets/score-decrease-button.svg");
+      }
+    }
+
+    &--increaseScore {
+      &:before {
+        background-image: url("../../assets/score-increase-button.svg");
+      }
     }
 
     &--edit {
@@ -45,62 +72,6 @@
     &--reset {
       &:before {
         background-image: url("../../assets/reset-button.svg");
-      }
-    }
-  }
-}
-
-.score {
-  display: flex;
-
-  &__ctas,
-  &__numbers,
-  &__otherActionsWrapper {
-    display: flex;
-    align-items: center;
-  }
-
-  &__otherActionsWrapper {
-    margin-left: $space25;
-  }
-
-  &__button {
-    margin-left: $space25;
-
-    &:after,
-    &:before {
-      content: "";
-      display: block;
-      background-color: grey;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    &--increase,
-    &--decrease {
-      border: 2px solid lightgrey;
-      background-color: $coconut-cream;
-      font-size: 16px;
-      height: rem(25px);
-      width: rem(25px);
-      border-radius: 999px;
-      position: relative;
-
-      &:after {
-        height: 0.2em;
-        width: 1em;
-      }
-
-      &:before {
-        width: 0.2em;
-      }
-    }
-
-    &--increase {
-      &:before {
-        height: 1em;
       }
     }
   }

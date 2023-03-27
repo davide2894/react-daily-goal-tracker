@@ -5,7 +5,7 @@
   flex-direction: column;
 
   &__h1 {
-    font-size: rem(25px);
+    font-size: rem($space55);
     text-align: center;
     text-decoration: underline;
     color: $white;
@@ -24,8 +24,8 @@
     &:before {
       content: "";
       display: block;
-      width: 55px;
-      height: 55px;
+      width: $space55;
+      height: $space55;
       background-image: url("../../assets/signout-button.svg");
       background-size: 20px;
       background-repeat: no-repeat;
