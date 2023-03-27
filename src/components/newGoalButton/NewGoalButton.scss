@@ -2,15 +2,15 @@
 
 .newGoalButton {
   &__button {
-    margin-top: $space16;
+    position: absolute;
+    right: $space25;
+    bottom: 50px;
     width: 60px;
     height: 60px;
     background-color: palegoldenrod;
     border-radius: 50%;
-    position: absolute;
-    bottom: 50px;
-    right: $space25;
+    font-size: rem($space40);
+    text-align: center;
+    vertical-align: middle;
   }
-
-  margin-bottom: $space25;
 }
