@@ -31,48 +31,26 @@
   }
 
   &__button {
-    @extend %reset-button;
-  }
+    margin-left: 16px;
 
-  &__buttonIcon {
-    &:before {
-      content: "";
-      display: block;
-      width: 55px;
-      height: 55px;
-      background-size: 20px;
-      background-repeat: no-repeat;
-      background-position: center;
+    &--increase {
+      @include buttonWithIcon("score-increase-button");
     }
 
-    &--decreaseScore {
-      &:before {
-        background-image: url("../../assets/score-decrease-button.svg");
-      }
-    }
-
-    &--increaseScore {
-      &:before {
-        background-image: url("../../assets/score-increase-button.svg");
-      }
+    &--decrease {
+      @include buttonWithIcon("score-decrease-button");
     }
 
     &--edit {
-      &:before {
-        background-image: url("../../assets/edit-button.svg");
-      }
+      @include buttonWithIcon("edit-button");
     }
 
     &--delete {
-      &:before {
-        background-image: url("../../assets/delete-button.svg");
-      }
+      @include buttonWithIcon("delete-button");
     }
 
     &--reset {
-      &:before {
-        background-image: url("../../assets/reset-button.svg");
-      }
+      @include buttonWithIcon("reset-button");
     }
   }
 }

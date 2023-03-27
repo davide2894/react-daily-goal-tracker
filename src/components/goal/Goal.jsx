@@ -38,17 +38,17 @@ function Goal({ goal, currentUser }) {
         <div className="score__ctas">
           <button
             title="decrease score by 1"
-            className="score__button score__button--increase"
+            className="score__button score__button--decrease"
             onClick={() => setDecrementGoalScore({ goal, currentUser })}
             disabled={goal.score.actual === goal.score.min || goal.isComplete}>
-            <span className="score__buttonIcon score__buttonIcon--decreaseScore"></span>
+            <span className="icon score__buttonIcon score__buttonIcon--decreaseScore"></span>
           </button>
           <button
             title="increase score by 1"
             className="score__button score__button--increase"
             onClick={() => setIncrementGoalScore({ goal, currentUser })}
             disabled={goal.score.actual === goal.score.max || goal.isComplete}>
-            <span className="score__buttonIcon score__buttonIcon--increaseScore"></span>
+            <span className="icon score__buttonIcon score__buttonIcon--increaseScore"></span>
           </button>
         </div>
         <div className="score__otherActionsWrapper">
@@ -57,20 +57,20 @@ function Goal({ goal, currentUser }) {
             className="score__button score__button--edit"
             disabled={goal.isComplete}
             onClick={onEditFormOpenHandler}>
-            <span className="score__buttonIcon score__buttonIcon--edit"></span>
+            <span className="icon score__buttonIcon score__buttonIcon--edit"></span>
           </button>
           <button
             title="delete goal"
             className="score__button score__button--delete"
             onClick={() => deleteGoal({ goal, currentUser })}>
-            <span className="score__buttonIcon score__buttonIcon--delete"></span>
+            <span className="icon score__buttonIcon score__buttonIcon--delete"></span>
           </button>
           <button
             title="reset goal score"
             className="score__button score__button--reset"
             disabled={goal.score.actual === 0}
             onClick={() => resetGoal({ goal, currentUser })}>
-            <span className="score__buttonIcon score__buttonIcon--reset"></span>
+            <span className="icon score__buttonIcon score__buttonIcon--reset"></span>
           </button>
           {showEditGoalForm && (
             <EditGoalForm

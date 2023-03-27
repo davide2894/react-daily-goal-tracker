@@ -1,5 +1,4 @@
-@use "./functions.scss" as *;
-@use "../variables/" as *;
+@use "../variables/index" as *;
 
 // BUTTONS
 @mixin buttonCommonStyle {
@@ -16,4 +15,21 @@
   border-radius: 15px;
   text-decoration: none;
   text-align: center;
+}
+
+@mixin buttonWithIcon($iconName) {
+  @extend %reset-button;
+
+  .icon {
+    &:before {
+      content: "";
+      display: block;
+      width: $space20;
+      height: $space20;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("../../../assets/#{$iconName}.svg");
+    }
+  }
 }
