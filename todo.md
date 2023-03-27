@@ -171,27 +171,29 @@ Ideally, this project should use
     [] mobile
         [x] home
         [] goals page
-            [] goal component
+            [x] goal component
                 [x] ctas
-                [] extra - ... - layer that on hover shows little layer with
-                    - edit btn
-                    - delete btn
-                    - reset btn
-                [] edit btn: add tooltip with label
-                [] delete btn: add tooltip with label
-                [] reset btn: add tooltip with label
-            [] add goal btn
-            [] goal form
-        [] signout button
-    [] adapt to table
-    [] adapt to desktp
-    [] scss bugfix: fix too many imports appear in styles tab on browsers. Something in the way I import style file is wrong
-    [] backend bugfix: edit button -> goes NaN when press edit submit button on form without changing current number, with score field already filled with actual max score
-    [] loader:
+                [x] edit btn: add tooltip with label
+                [x] delete btn: add tooltip with label
+                [x] reset btn: add tooltip with label
+            [x] edit form popup
+            [x] add goal
+                [x] add goal btn
+                [x] add goal form
+        [x] signout button
+    [x] adapt to tablet
+    [x] adapt to desktp
+    [x] scss bugfix: fix too many imports appear in styles tab on browsers. Something in the way I import style file is wrong
+    [x] backend bugfix: edit button -> goes NaN when press edit submit button on form without changing current number, with score field already filled with actual max score
+    [\\\] loader:
         [] while firestore operation is performing -> show loader
         [] while firestore operation is performing -> hide loader
+    ____nice to have but not cumpolsory[] extra - ... - layer that on hover shows little layer with
+        - edit btn
+        - delete btn
+        - reset btn
 
-# [] test
+# [x] test
 
 # [] migrate code to typeScrit
 
