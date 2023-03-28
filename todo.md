@@ -210,3 +210,9 @@ Warning: A component is changing a controlled input to be uncontrolled. This is 
     [] remove console.logs
     [] remove firestore credentials from repo
     [] remove todo from commited file
+
+# [] publish
+
+    [] publish app
+    [] test it live on android
+    [] test it live on ios
