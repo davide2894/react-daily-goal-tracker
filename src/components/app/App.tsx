@@ -1,5 +1,5 @@
 import "./App.scss";
-import { Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../home/Home";
 import MyAccount from "../myAccount/MyAccount";
 import Goals from "../goals/Goals";

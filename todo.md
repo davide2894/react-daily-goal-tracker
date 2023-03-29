@@ -198,8 +198,19 @@ Ideally, this project should use
 # [] migrate code to typeScrit
 
     [] migrate all of the code to TypeScript
+        [x] install typescript in app
+        [x] create and adapt tsconfig file (copy it from top project if needed)
+        [x] rename every singile jsx into tsx
+        [] fix compiler bugs if there is any already by now
+        [] fix tests files that show erros (highlighted in red)
+        [] create types where you see it fit (put types and interfaces inside common file called types. every single type is to be exported one at a time, not everything at once. because by exporting one type at a time, you can import them one by one dynamically)
+            [] goal
+            [] score
+            [] user
+            [] button
+            [] for firebase?
     [] test that everything works accordingly
-    [] push all the new codde
+    [] push all the new code
 
 # [] check this error out when trying to edit goal max score
 
