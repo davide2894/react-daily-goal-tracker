@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "sass": "^1.58.3",
     "source-map-loader": "^4.0.1",
     "ts-loader": "^9.4.2",
