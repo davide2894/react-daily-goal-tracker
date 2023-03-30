@@ -18,7 +18,7 @@ function Home() {
         setIsUserLogged(true);
         dispatch(
           login({
-            email: user.email,
+            email: user.email !== null ? user.email : "",
             uid: user.uid,
             userDocId: `${user.email}-${user.uid}`,
           })

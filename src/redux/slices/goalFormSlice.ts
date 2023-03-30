@@ -1,10 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { GoalFormData } from "../../types";
 
 const initialState = {
   show: false,
   goalTitle: "",
   goalScore: "",
-};
+} as GoalFormData;
 
 export const goalFormSlice = createSlice({
   name: "goalFormSlice",
@@ -16,15 +17,8 @@ export const goalFormSlice = createSlice({
     hideForm: (state) => {
       state.show = false;
     },
-    setGoalTitle: (state, payload) => {
-      state.goalTitle = payload;
-    },
-    setGoalScore: (state, payload) => {
-      state.goalTitle = payload;
-    },
   },
 });
 
-export const { showForm, hideForm, setGoalTitle, setGoalScore } =
-  goalFormSlice.actions;
+export const { showForm, hideForm } = goalFormSlice.actions;
 export default goalFormSlice.reducer;

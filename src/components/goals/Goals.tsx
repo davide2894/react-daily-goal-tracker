@@ -6,10 +6,11 @@ import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
-import { UserState } from "../../types";
+import { User } from "../../types";
+import { RootState } from "@reduxjs/toolkit/dist/query/core/apiState";
 
 function Goals() {
-  const currentUser = useSelector((state: UserState) => state.user);
+  const currentUser = useSelector((state: User) => state.user);
   const navigate = useNavigate();
   const {
     data: goals,

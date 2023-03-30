@@ -8,6 +8,7 @@ import {
   setDoc,
   increment,
   deleteDoc,
+  DocumentData,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -18,7 +19,7 @@ export const firestoreApi = createApi({
     fetchGoals: builder.query({
       async queryFn(user) {
         try {
-          let goals = [];
+          let goals: Array<DocumentData> = [];
           const querySnapshot = await getDocs(
             collection(db, `/users/${user.userDocId}/user-goals/`)
           );
