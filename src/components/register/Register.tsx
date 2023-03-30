@@ -36,7 +36,7 @@ function Register() {
             type="email"
             name="email"
             id="registrationFormEmailInput"
-            placeholer="Enter email"
+            placeholder="Enter email"
             value={email}
             onChange={(evt) => setEmail(evt.target.value)}
           />

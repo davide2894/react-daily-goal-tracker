@@ -7,11 +7,13 @@ import Goals from "../goals/Goals";
 function App() {
   return (
     <div className="app">
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="goals" element={<Goals />}></Route>
-        <Route path="myAccount" element={<MyAccount />}></Route>
-      </Routes>
+      {
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="goals" element={<Goals />}></Route>
+          <Route path="myAccount" element={<MyAccount />}></Route>
+        </Routes>
+      }
     </div>
   );
 }
