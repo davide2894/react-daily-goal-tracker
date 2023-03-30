@@ -47,7 +47,7 @@ function Register() {
           <input
             type="password"
             name="password"
-            input="registrationFormPasswordInput"
+            id="registrationFormPasswordInput"
             placeholder="Enter password"
             value={password}
             onChange={(evt) => setPassword(evt.target.value)}
