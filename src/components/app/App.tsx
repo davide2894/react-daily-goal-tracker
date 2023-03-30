@@ -1,21 +1,26 @@
 import "./App.scss";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../home/Home";
-import MyAccount from "../myAccount/MyAccount";
 import Goals from "../goals/Goals";
+import MyAccount from "../myAccount/MyAccount";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
-  return (
-    <div className="app">
-      {
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="goals" element={<Goals />}></Route>
-          <Route path="myAccount" element={<MyAccount />}></Route>
-        </Routes>
-      }
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "myAccount",
+      element: <MyAccount />,
+    },
+    {
+      path: "goals",
+      element: <Goals />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
