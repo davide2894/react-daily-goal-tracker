@@ -212,6 +212,13 @@ Ideally, this project should use
     [] test that everything works accordingly
     [] push all the new code
 
+# [] more style
+
+    [] fix server error message style
+        [] mobile
+        [] tablet
+        [] desktop
+
 # [] check this error out when trying to edit goal max score
 
 Warning: A component is changing a controlled input to be uncontrolled. This is likely caused by the value changing from a defined to undefined, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime
