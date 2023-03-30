@@ -70,25 +70,28 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
+    //todo:
+    // - start to fix this and then go to the other actions for firebase
+    // - everything has to be migrated to typescript
     incrementGoalScore: builder.mutation({
-      async queryFn({ goal, currentUser }) {
+      async queryFn({ goalId, max, min, currentUser }) {
         try {
-          console.log({ goal, currentUser });
+          console.log({ goalId, currentUser });
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,
-            goal.id
+            goalId
           );
           await updateDoc(docRef, {
             "score.actual": increment(1),
           });
-          const newActualScore = goal.score.actual + 1;
-          if (newActualScore === goal.score.max) {
+          const newActualScore = min + 1;
+          if (newActualScore === max) {
             await updateDoc(docRef, {
               isComplete: true,
             });
           }
-          return { data: goal };
+          return { data: "ok" };
         } catch (err) {
           return { error: err };
         }

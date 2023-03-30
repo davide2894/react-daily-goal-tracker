@@ -46,7 +46,14 @@ function Goal({ goal, currentUser }) {
           <button
             title="increase score by 1"
             className="score__button score__button--increase"
-            onClick={() => setIncrementGoalScore({ goal, currentUser })}
+            onClick={() =>
+              setIncrementGoalScore({
+                goalId: goal.id,
+                max: goal.score.max,
+                min: goal.score.min,
+                currentUser,
+              })
+            }
             disabled={goal.score.actual === goal.score.max || goal.isComplete}>
             <span className="icon score__buttonIcon score__buttonIcon--increaseScore"></span>
           </button>
