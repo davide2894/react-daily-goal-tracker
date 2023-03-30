@@ -35,6 +35,10 @@ export const firestoreApi = createApi({
       },
       providesTags: ["Goals"],
     }),
+    //@todo:
+    // - fix other actions for firebase
+    // - everything has to be migrated to typescript
+    // - start from and go in order
     addGoal: builder.mutation({
       async queryFn({ newGoal, currentUser }) {
         try {
@@ -52,9 +56,7 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
-    //todo:
-    // - fix other actions for firebase
-    // - everything has to be migrated to typescript
+    // ts - ok
     decrementGoalScore: builder.mutation({
       async queryFn({ goalId, currentUser }) {
         try {
@@ -73,6 +75,7 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
+    // ts - ok
     incrementGoalScore: builder.mutation({
       async queryFn({ goalId, max, min, currentUser }) {
         try {
