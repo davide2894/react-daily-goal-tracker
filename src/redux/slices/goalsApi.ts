@@ -52,13 +52,16 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
+    //todo:
+    // - fix other actions for firebase
+    // - everything has to be migrated to typescript
     decrementGoalScore: builder.mutation({
-      async queryFn({ goal, currentUser }) {
+      async queryFn({ goalId, currentUser }) {
         try {
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,
-            goal.id
+            goalId
           );
           await updateDoc(docRef, {
             "score.actual": increment(-1),

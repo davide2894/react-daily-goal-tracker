@@ -39,7 +39,9 @@ function Goal({ goal, currentUser }) {
           <button
             title="decrease score by 1"
             className="score__button score__button--decrease"
-            onClick={() => setDecrementGoalScore({ goal, currentUser })}
+            onClick={() =>
+              setDecrementGoalScore({ goalId: goal.id, currentUser })
+            }
             disabled={goal.score.actual === goal.score.min || goal.isComplete}>
             <span className="icon score__buttonIcon score__buttonIcon--decreaseScore"></span>
           </button>
