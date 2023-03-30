@@ -5,9 +5,6 @@ import App from "./components/app/App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/home/Home";
-import Goals from "./components/goals/Goals";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
