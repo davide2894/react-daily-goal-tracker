@@ -73,9 +73,6 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
-    //todo:
-    // - start to fix this and then go to the other actions for firebase
-    // - everything has to be migrated to typescript
     incrementGoalScore: builder.mutation({
       async queryFn({ goalId, max, min, currentUser }) {
         try {
