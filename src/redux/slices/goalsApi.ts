@@ -11,6 +11,7 @@ import {
   DocumentData,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import { Goal } from "../../types";
 
 export const firestoreApi = createApi({
   baseQuery: fakeBaseQuery(),

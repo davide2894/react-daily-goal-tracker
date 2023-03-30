@@ -14,7 +14,7 @@ export interface GoalFormData {
   goalScore: string;
 }
 
-export interface NewGoal {
+export interface Goal {
   title: string;
   score: {
     max: number;
