@@ -1,16 +1,14 @@
 import Goal from "../goal/Goal";
 import "./Goals.scss";
 import NewGoalButton from "../newGoalButton/NewGoalButton";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../redux/store";
 import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
-import { User } from "../../types";
-import { RootState } from "@reduxjs/toolkit/dist/query/core/apiState";
 
 function Goals() {
-  const currentUser = useSelector((state: User) => state.user);
+  const currentUser = useAppSelector((state) => state.userReducer.user);
   const navigate = useNavigate();
   const {
     data: goals,
