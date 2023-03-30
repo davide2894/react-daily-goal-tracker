@@ -8,7 +8,7 @@ import { login } from "../../redux/slices/userSlice";
 import Goals from "../goals/Goals";
 
 function Home() {
-  const [isUserLogged, setIsUserLogged] = useState("");
+  const [isUserLogged, setIsUserLogged] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
