@@ -6,9 +6,10 @@ import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
+import { UserState } from "../../types";
 
 function Goals() {
-  const currentUser = useSelector((state) => state.userReducer.user);
+  const currentUser = useSelector((state: UserState) => state.user);
   const navigate = useNavigate();
   const {
     data: goals,

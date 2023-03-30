@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useEditGoalMutation } from "../../redux/slices/goalsApi";
 import { useSelector } from "react-redux";
+import { UserState } from "../../types";
 
 function EditGoalForm({ onCloseProp, id, titleToEdit, maxScoreToEdit }) {
   const [newTitle, setNewTitle] = useState(titleToEdit || "");
   const [newMaxScore, setNewMaxScore] = useState(maxScoreToEdit || "");
 
-  const currentUser = useSelector((state) => state.userReducer.user);
+  const currentUser = useSelector((state: UserState) => state.user);
   const [editGoal] = useEditGoalMutation();
 
   function onFormSubmit(evt) {
