@@ -18,4 +18,12 @@ body {
   input:-webkit-autofill:focus {
     transition: background-color 600000s 0s, color 600000s 0s !important;
   }
+
+  *:focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  :focus {
+    outline: 5px solid palegoldenrod;
+  }
 }
