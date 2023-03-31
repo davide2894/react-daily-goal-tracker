@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register component matches its own snapshot 1`] = `
+<div
+  className="myAccount__form myAccount__form--register form"
+  data-testid="registerComponentTestElement"
+>
+  <h2>
+    Register an account to start setting goals 
+  </h2>
+  <br />
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-control"
+    >
+      <label
+        htmlFor="registrationFormNameInput"
+      >
+        Name
+      </label>
+      <input
+        id="registrationFormNameInput"
+        name="name"
+        onChange={[Function]}
+        placeholder="Enter name"
+        type="text"
+        value=""
+      />
+      <span
+        className="separator"
+      >
+         
+      </span>
+    </div>
+    <div
+      className="form-control"
+    >
+      <label
+        htmlFor="registrationFormEmailInput"
+      >
+        Email
+      </label>
+      <input
+        id="registrationFormEmailInput"
+        name="email"
+        onChange={[Function]}
+        placeholder="Enter email"
+        type="email"
+        value=""
+      />
+      <span
+        className="separator"
+      >
+         
+      </span>
+    </div>
+    <div
+      className="form-control"
+    >
+      <label
+        htmlFor="registrationFormPasswordInput"
+      >
+        Password
+      </label>
+      <input
+        id="registrationFormPasswordInput"
+        name="password"
+        onChange={[Function]}
+        placeholder="Enter password"
+        type="password"
+        value=""
+      />
+      <span
+        className="separator"
+      >
+         
+      </span>
+    </div>
+    <div
+      className="form-control"
+    >
+      <button
+        type="submit"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+</div>
+`;
