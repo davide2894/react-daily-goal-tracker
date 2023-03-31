@@ -35,7 +35,6 @@ export const firestoreApi = createApi({
           querySnapshot.forEach((doc) => {
             goals.push(mapGoal(doc.data()));
           });
-          console.log({ data: goals });
           return { data: goals };
         } catch (error) {
           console.error(error.message);
@@ -55,7 +54,6 @@ export const firestoreApi = createApi({
           await setDoc(docRef, newGoal, { merge: true });
           return { data: newGoal };
         } catch (err) {
-          console.log({ error: err });
           return { error: err };
         }
       },
@@ -82,7 +80,6 @@ export const firestoreApi = createApi({
     incrementGoalScore: builder.mutation({
       async queryFn({ goalId, max, min, currentUser }) {
         try {
-          console.log({ goalId, currentUser });
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,

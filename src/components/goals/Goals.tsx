@@ -21,16 +21,11 @@ function Goals() {
   function handleSignOut() {
     signOut(auth)
       .then(() => {
-        console.log("user was successfully signed out");
         navigate("/");
       })
       .catch((error) => {
         console.error(error.message);
       });
-  }
-
-  if (isSuccess) {
-    console.log({ isSuccess: goals });
   }
 
   return (

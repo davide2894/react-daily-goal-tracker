@@ -40,7 +40,6 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       password
     );
     const user = registrationResult.user;
-    console.log({ registedUser: user });
     await setDoc(doc(db, "users", `${user.email}-${user.uid}`), {
       name,
       email,

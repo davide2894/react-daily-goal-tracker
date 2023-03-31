@@ -22,8 +22,6 @@ const conpletedGoal = {
   isComplete: true,
 };
 
-console.log({ conpletedGoal });
-
 const currentUser = {
   email: "testcurrentuseremailforreact@yopmail.com",
   uid: "bbgQNkAxgEZrxB5ZkEXZIAdZARB2",
