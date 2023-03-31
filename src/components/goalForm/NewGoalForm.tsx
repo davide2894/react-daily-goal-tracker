@@ -30,9 +30,11 @@ function NewGoalForm({ onCloseProp }) {
   }
 
   return (
-    <>
+    <Modal>
       <div className="modalOverlay">
-        <button className="modalOverlay__closeButton" onClick={onCloseProp}>
+        <button 
+          className="modalOverlay__closeButton"
+          onClick={onCloseProp}>
           <span className="modalOverlay__closeIcon"></span>
         </button>
         <div className="modalOverlay__main">
@@ -53,7 +55,6 @@ function NewGoalForm({ onCloseProp }) {
                   />
                 </label>
               </div>
-              <div className="goalForm__score">
                 <label htmlFor="scoreInput">
                   times to meet per week
                   <input
@@ -74,7 +75,7 @@ function NewGoalForm({ onCloseProp }) {
           </div>
         </div>
       </div>
-    </>
+    </Modal>
   );
 }
 

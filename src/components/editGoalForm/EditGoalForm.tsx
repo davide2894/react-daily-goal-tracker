@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEditGoalMutation } from "../../redux/slices/goalsApi";
 import { useAppSelector } from "../../redux/store";
+import Modal from "../modal/Modal";
 
 function EditGoalForm({ onCloseProp, id, titleToEdit, maxScoreToEdit }) {
   const [newTitle, setNewTitle] = useState(titleToEdit || "");
@@ -23,7 +24,7 @@ function EditGoalForm({ onCloseProp, id, titleToEdit, maxScoreToEdit }) {
   }
 
   return (
-    <>
+    <Modal>
       <div className="editGoalForm modalOverlay">
         <button
           className="editGoalForm__close modalOverlay__closeButton"
@@ -33,7 +34,6 @@ function EditGoalForm({ onCloseProp, id, titleToEdit, maxScoreToEdit }) {
         <div className="modalOverlay__main">
           <div className="modalOverlay__content form">
             <h2 className="modalOverlay__h2">Edit Goal</h2>
-
             <form onSubmit={(evt) => onFormSubmit(evt)}>
               <div className="editGoalForm__name">
                 <label htmlFor="nameInput">
@@ -70,7 +70,7 @@ function EditGoalForm({ onCloseProp, id, titleToEdit, maxScoreToEdit }) {
           </div>
         </div>
       </div>
-    </>
+    </Modal>
   );
 }
 
