@@ -98,6 +98,7 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
+    // ts - ok
     editGoal: builder.mutation({
       async queryFn({ updatedGoalData, currentUser }) {
         try {
@@ -118,12 +119,12 @@ export const firestoreApi = createApi({
       invalidatesTags: ["Goals"],
     }),
     deleteGoal: builder.mutation({
-      async queryFn({ goal, currentUser }) {
+      async queryFn({ goalId, currentUser }) {
         try {
           await deleteDoc(
-            doc(db, `/users/${currentUser.userDocId}/user-goals/`, goal.id)
+            doc(db, `/users/${currentUser.userDocId}/user-goals/`, goalId)
           );
-          return { data: goal };
+          return { data: "ok" };
         } catch (err) {
           return { error: err };
         }

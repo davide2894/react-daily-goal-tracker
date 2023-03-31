@@ -71,7 +71,7 @@ function Goal({ goal, currentUser }) {
           <button
             title="delete goal"
             className="score__button score__button--delete"
-            onClick={() => deleteGoal({ goal, currentUser })}>
+            onClick={() => deleteGoal({ goalId: goal.id, currentUser })}>
             <span className="icon score__buttonIcon score__buttonIcon--delete"></span>
           </button>
           <button
