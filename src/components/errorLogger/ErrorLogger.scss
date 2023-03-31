@@ -1,0 +1,13 @@
+@use "../../scss/core" as *;
+
+.errorMessage {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: $space55;
+
+  h1 {
+    font-size: rem($space25);
+    color: palevioletred;
+  }
+}
