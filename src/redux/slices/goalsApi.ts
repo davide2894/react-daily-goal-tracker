@@ -35,7 +35,6 @@ export const firestoreApi = createApi({
       },
       providesTags: ["Goals"],
     }),
-    // ts - ok
     addGoal: builder.mutation({
       async queryFn({ newGoal, currentUser }) {
         try {
@@ -53,7 +52,6 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
-    // ts - ok
     decrementGoalScore: builder.mutation({
       async queryFn({ goalId, currentUser }) {
         try {
@@ -72,7 +70,6 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
-    // ts - ok
     incrementGoalScore: builder.mutation({
       async queryFn({ goalId, max, min, currentUser }) {
         try {
@@ -98,7 +95,6 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
-    // ts - ok
     editGoal: builder.mutation({
       async queryFn({ updatedGoalData, currentUser }) {
         try {
@@ -118,7 +114,6 @@ export const firestoreApi = createApi({
       },
       invalidatesTags: ["Goals"],
     }),
-    // ts - ok
     deleteGoal: builder.mutation({
       async queryFn({ goalId, currentUser }) {
         try {
