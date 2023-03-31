@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
