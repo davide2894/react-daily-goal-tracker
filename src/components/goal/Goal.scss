@@ -1,11 +1,11 @@
 @use "../../scss/core" as *;
 
 .goal {
-  margin: $space25;
   align-self: flex-start;
   text-align: left;
   font-size: rem(24px);
   min-width: 100%;
+  margin-bottom: $space25;
 
   &--completed {
     .score__button:not(.score__button--reset) {

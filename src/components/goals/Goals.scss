@@ -3,13 +3,20 @@
 .goals {
   display: flex;
   flex-direction: column;
+  margin-left: $space25;
+  margin-right: $space25;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 960px;
+    margin: 0 auto;
+  }
 
   &__h1 {
     font-size: rem($space55);
     text-align: center;
     text-decoration: underline;
     color: $white;
-    margin-bottom: $space40;
+    margin-bottom: $space55;
   }
 }
 

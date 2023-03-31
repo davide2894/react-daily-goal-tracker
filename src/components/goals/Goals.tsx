@@ -44,7 +44,7 @@ function Goals() {
       <h1 className="goals__h1">Goals</h1>
       <NewGoalButton />
       {isLoading && <div>Loading...</div>}
-      {/* {isError && (
+      {isError && (
         <ErrorLogger errorMessage={"Server error. Try again later :("} />
       )}
       {isSuccess && goals ? (
@@ -53,15 +53,11 @@ function Goals() {
         })
       ) : (
         <ErrorLogger
-          errorMessage={"Oho! It appears you don't have any goals yet."}
+          errorMessage={
+            "Oho! It appears you don't have any goals yet. Try add one :)"
+          }
         />
-      )} */}
-
-      <ErrorLogger
-        errorMessage={
-          "Oho! It appears you don't have any goals yet. Try add one :)"
-        }
-      />
+      )}
     </div>
   );
 }
