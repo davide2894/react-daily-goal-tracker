@@ -2,7 +2,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useAddGoalMutation } from "../../redux/slices/goalsApi";
 import { useAppSelector } from "../../redux/store";
-import { Goal, User } from "../../types";
+import { Goal } from "../../types";
 
 function NewGoalForm({ onCloseProp }) {
   const [goalTitle, setGoalTitle] = useState("");
