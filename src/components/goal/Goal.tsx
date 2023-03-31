@@ -11,7 +11,7 @@ import {
 function Goal({ goal, currentUser }) {
   const [showEditGoalForm, setShowEditGoalForm] = useState(false);
   const goalWrapperClasses = `goal ${
-    goal && goal.isComplete ? "goal--completed" : ""
+    goal && goal.isComplete ? "goal--isComplete" : ""
   }`;
   const [setDecrementGoalScore] = useDecrementGoalScoreMutation();
   const [setIncrementGoalScore] = useIncrementGoalScoreMutation();
@@ -52,7 +52,7 @@ function Goal({ goal, currentUser }) {
               setIncrementGoalScore({
                 goalId: goal.id,
                 max: goal.score.max,
-                min: goal.score.min,
+                actual: goal.score.actual,
                 currentUser,
               })
             }

@@ -7,12 +7,19 @@
   min-width: 100%;
   margin-bottom: $space25;
 
-  &--completed {
+  &--isComplete {
     .score__button:not(.score__button--reset) {
       pointer-events: none;
     }
 
-    color: yellow;
+    .goal__title {
+      &:after {
+        content: "✓";
+        margin-left: 10px;
+      }
+    }
+
+    color: palegreen;
   }
 
   &__title {

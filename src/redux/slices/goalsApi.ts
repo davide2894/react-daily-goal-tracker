@@ -78,7 +78,7 @@ export const firestoreApi = createApi({
       invalidatesTags: ["Goals"],
     }),
     incrementGoalScore: builder.mutation({
-      async queryFn({ goalId, max, min, currentUser }) {
+      async queryFn({ goalId, max, actual, currentUser }) {
         try {
           const docRef = doc(
             db,
@@ -88,7 +88,7 @@ export const firestoreApi = createApi({
           await updateDoc(docRef, {
             "score.actual": increment(1),
           });
-          const newActualScore = min + 1;
+          const newActualScore = actual + 1;
           if (newActualScore === max) {
             await updateDoc(docRef, {
               isComplete: true,
