@@ -78,7 +78,7 @@ function Goal({ goal, currentUser }) {
             title="reset goal score"
             className="score__button score__button--reset"
             disabled={goal.score.actual === 0}
-            onClick={() => resetGoal({ goal, currentUser })}>
+            onClick={() => resetGoal({ goalId: goal.id, currentUser })}>
             <span className="icon score__buttonIcon score__buttonIcon--reset"></span>
           </button>
           {showEditGoalForm && (
