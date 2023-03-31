@@ -8,9 +8,18 @@ import {
   setDoc,
   increment,
   deleteDoc,
-  DocumentData,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import { Goal } from "../../types";
+
+const mapGoal = (goalObjectFromFirestore): Goal => {
+  return {
+    title: goalObjectFromFirestore.title,
+    score: goalObjectFromFirestore.score,
+    isComplete: goalObjectFromFirestore.isComplete,
+    id: goalObjectFromFirestore.id,
+  };
+};
 
 export const firestoreApi = createApi({
   baseQuery: fakeBaseQuery(),
@@ -19,12 +28,12 @@ export const firestoreApi = createApi({
     fetchGoals: builder.query({
       async queryFn(user) {
         try {
-          let goals: Array<DocumentData> = [];
+          let goals: Array<Goal> = [];
           const querySnapshot = await getDocs(
             collection(db, `/users/${user.userDocId}/user-goals/`)
           );
           querySnapshot.forEach((doc) => {
-            goals.push(doc.data());
+            goals.push(mapGoal(doc.data()));
           });
           console.log({ data: goals });
           return { data: goals };
