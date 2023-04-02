@@ -1,4 +1,16 @@
+import { useEffect } from "react";
+
 function Modal(props) {
+  useEffect(() => {
+    function handleEscapeKey(event: KeyboardEvent) {
+      if (event.code === "Escape") {
+        props.onClose();
+      }
+    }
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
+  });
+
   function onCloseClick() {
     props.onClose();
   }
