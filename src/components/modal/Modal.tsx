@@ -12,7 +12,9 @@ function Modal(props) {
       </button>
       <div className="modalOverlay__main">
         <div className="modalOverlay__content form">
-          <h2 className="modalOverlay__h2">Edit Goal</h2>
+          <h2 className="modalOverlay__h2">
+            {props.mode === "add" ? "Add Goal" : "Edit Goal"}
+          </h2>
           {props.children}
         </div>
       </div>

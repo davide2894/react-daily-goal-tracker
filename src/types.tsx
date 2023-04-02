@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export interface User {
   user?: object;
 }
@@ -23,4 +25,13 @@ export interface Goal {
   };
   isComplete: boolean;
   id: any;
+}
+
+export interface FormProps {
+  goal?: Goal;
+  id?: number;
+  titleToEdit?: string;
+  maxScoreToEdit?: string;
+  mode?: string;
+  onGoalFormSubmit?: () => void;
 }

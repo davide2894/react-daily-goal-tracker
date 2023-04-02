@@ -44,15 +44,15 @@ export const firestoreApi = createApi({
       providesTags: ["Goals"],
     }),
     addGoal: builder.mutation({
-      async queryFn({ newGoal, currentUser }) {
+      async queryFn({ goal, currentUser }) {
         try {
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,
-            newGoal.id
+            goal.id
           );
-          await setDoc(docRef, newGoal, { merge: true });
-          return { data: newGoal };
+          await setDoc(docRef, goal, { merge: true });
+          return { data: "ok" };
         } catch (err) {
           return { error: err };
         }
@@ -102,18 +102,18 @@ export const firestoreApi = createApi({
       invalidatesTags: ["Goals"],
     }),
     editGoal: builder.mutation({
-      async queryFn({ updatedGoalData, currentUser }) {
+      async queryFn({ goal, currentUser }) {
         try {
           const docRef = doc(
             db,
             `/users/${currentUser.userDocId}/user-goals/`,
-            updatedGoalData.id
+            goal.id
           );
           await updateDoc(docRef, {
-            "score.max": parseInt(updatedGoalData.newMaxScore),
-            title: updatedGoalData.newTitle,
+            "score.max": parseInt(goal.score.max),
+            title: goal.title,
           });
-          return { data: updatedGoalData };
+          return { data: "ok" };
         } catch (err) {
           return { error: err };
         }

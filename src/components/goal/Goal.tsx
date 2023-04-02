@@ -7,6 +7,8 @@ import {
   useIncrementGoalScoreMutation,
   useResetGoalMutation,
 } from "../../redux/slices/goalsApi";
+import Modal from "../modal/Modal";
+import GoalForm from "../goalForm/goalForm";
 
 function Goal({ goal, currentUser }) {
   const [showEditGoalForm, setShowEditGoalForm] = useState(false);
@@ -20,10 +22,6 @@ function Goal({ goal, currentUser }) {
 
   function onEditFormOpenHandler() {
     setShowEditGoalForm(true);
-  }
-
-  function onEditFormCloseHandler() {
-    setShowEditGoalForm(false);
   }
 
   return (
@@ -82,12 +80,16 @@ function Goal({ goal, currentUser }) {
             <span className="icon score__buttonIcon score__buttonIcon--reset"></span>
           </button>
           {showEditGoalForm && (
-            <EditGoalForm
-              onCloseProp={onEditFormCloseHandler}
-              id={goal.id}
-              titleToEdit={goal.title}
-              maxScoreToEdit={goal.score.max}
-            />
+            <Modal mode="edit" onClose={() => setShowEditGoalForm(false)}>
+              <GoalForm
+                goal={goal}
+                id={goal.id}
+                titleToEdit={goal.title}
+                maxScoreToEdit={goal.score.max}
+                mode="edit"
+                onGoalFormSubmit={() => setShowEditGoalForm(false)}
+              />
+            </Modal>
           )}
         </div>
       </div>

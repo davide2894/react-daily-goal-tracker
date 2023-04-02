@@ -1,14 +1,28 @@
-function goalForm() {
-  const [goalTitle, setGoalTitle] = useState("");
-  const [goalScore, setGoalScore] = useState("");
+import { useState } from "react";
+import {
+  useAddGoalMutation,
+  useEditGoalMutation,
+} from "../../redux/slices/goalsApi";
+import { useAppSelector } from "../../redux/store";
+import { v4 as uuidv4 } from "uuid";
+import { Goal, FormProps } from "../../types";
 
-  const [setAddGoal] = useAddGoalMutation();
+function GoalForm(props: FormProps) {
+  const [goalTitle, setGoalTitle] = useState(
+    props.titleToEdit ? props.titleToEdit : ""
+  );
+  const [goalScore, setGoalScore] = useState(
+    props.maxScoreToEdit ? props.maxScoreToEdit : ""
+  );
+
+  const [addGoal] = useAddGoalMutation();
+  const [editGoal] = useEditGoalMutation();
   const currentUser = useAppSelector((state) => state.userReducer.user);
 
   function onFormSubmit(evt) {
     evt.preventDefault();
 
-    const newGoal: Goal = {
+    const goal: Goal = {
       title: goalTitle,
       score: {
         max: parseInt(goalScore),
@@ -16,10 +30,20 @@ function goalForm() {
         actual: 0,
       },
       isComplete: false,
-      id: uuidv4(),
+      id: props.id ? props.id : uuidv4(),
     };
 
-    setAddGoal({ newGoal, currentUser });
+    if (props.mode) {
+      if (props.mode === "add") {
+        addGoal({ goal, currentUser });
+      } else if (props.mode === "edit") {
+        editGoal({ goal, currentUser });
+      }
+    }
+
+    if (props.onGoalFormSubmit) {
+      props.onGoalFormSubmit();
+    }
   }
 
   return (
@@ -53,13 +77,10 @@ function goalForm() {
         </label>
       </div>
       <button type="submit" value="Submit">
-        Edit goal
+        Submit
       </button>
     </form>
   );
 }
 
-export default goalForm;
-function uuidv4(): any {
-  throw new Error("Function not implemented.");
-}
+export default GoalForm;
