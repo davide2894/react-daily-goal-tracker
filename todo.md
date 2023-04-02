@@ -36,9 +36,9 @@ Ideally, this project should use
     [x] put down notes
     [x] draw screens
 
-# [] development
+# [x] development
 
-## [] main behavior
+## [x] main behavior
 
 ### [] frontend
 
@@ -148,23 +148,23 @@ Ideally, this project should use
                 -> if user exists -> go to login page
                 -> if user doesn't exist -> go to register page
 
-## [] unit tests
+## [x] unit tests
 
     [] components
         [x] login
         [x] register
-        [] goal
+        [x] goal
             [x] test prop: check that if goal.isComplete then it must have complete class added
-            [] when click on increment goal score
+            [x] when click on increment goal score
                 -> I expect score to increment by one
-            [] when click on decrement goal score
+            [x] when click on decrement goal score
                 -> I expect score to decrement by one
-        [] newGoalButton
-            [] when click on goal add button, the goal modal shows up with
-            [] submit form -> new goawl added to goals
-        [] user
-            [] on user registration -> user is logged in
-            [] when user logs in -> user is shown (???)
+        [x] newGoalButton
+            [x] when click on goal add button, the goal modal shows up with
+            [x] submit form -> new goawl added to goals
+        [x] user
+            [x] on user registration -> user is logged in
+            [x] when user logs in -> user is shown (???)
 
 #### [] style
 
@@ -195,44 +195,62 @@ Ideally, this project should use
 
 # [x] test
 
-# [] migrate code to typeScrit
+# [x] migrate code to typeScrit
 
-    [] migrate all of the code to TypeScript
+    [x] migrate all of the code to TypeScript
         [x] install typescript in app
         [x] create and adapt tsconfig file (copy it from top project if needed)
         [x] rename every singile jsx into tsx
-        [] fix compiler bugs if there is any already by now
-        [] fix tests files that show erros (highlighted in red)
-        [] create types where you see it fit (put types and interfaces inside common file called types. every single type is to be exported one at a time, not everything at once. because by exporting one type at a time, you can import them one by one dynamically)
-            [] goal
-            [] score
-            [] user
-            [] button
-            [] for firebase?
-    [] test that everything works accordingly
-    [] push all the new code
+        [x] fix compiler bugs if there is any already by now
+        [x] create types where you see it fit (put types and interfaces inside common file called types. every single type is to be exported one at a time, not everything at once. because by exporting one type at a time, you can import them one by one dynamically)
+            [x] goal
+            [x] score
+            [x] user
+            [x] button
+            [x] for firebase?
+    [x] test that everything works accordingly
+    [x] fix tests files that show erros (highlighted in red)
+    [x] push all the new code
 
-# [] more style
+# [x] more style
 
-    [] fix server error message style
-        [] mobile
-        [] tablet
-        [] desktop
+    [x] fix server error message style
+        [x] mobile
+        [x] tablet
+        [x] desktop
 
-# [] optimize types structure by taking advantage and using properly polymorphism
+# [x] optimize types structure by taking advantage and using properly polymorphism
 
-# [] check this error out when trying to edit goal max score
+# [x] check this error out when trying to edit goal max score
 
 Warning: A component is changing a controlled input to be uncontrolled. This is likely caused by the value changing from a defined to undefined, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime
 
-# [] cleanup
+# [x] a11y
 
-    [] remove console.logs
-    [] remove firestore credentials from repo
-    [] remove todo from commited file
+    [x] focus -> pale yellow outline
+    [x] unify modals (new goal and edit goal in one single component)
+    [x] commonize modal and forms
+        [x] make one central modal component to use
+        [x] make one central goal form to use
+            [x] see what actually changes between edit and add new goal
+            [x] make one common goal form component that takes a prop
+                -> add new goal
+                -> edit new goal
+                [x] baded on this prop we adapt the action it's going to do
+    [x] close modal
+        [x] on esc -> close modal
+        [x] on click outside
+
+# [x] landing
+
+    [x] see if something can be done with the landing, because right now when i reload the page it goes firstly to the myaccount page and then it checks wheter the user is logged in or not, and only then goes to the goals page.
+    When it lands, if user is logged, it should go directly to the goals page.
+    Maybe see if it's possible to insert a loader or something like this?
 
 # [] publish
 
-    [] publish app
+    [] write a good readme (wh)
+    [] publish app with gh-pages (quizzical on gh)
     [] test it live on android
     [] test it live on ios
+    [] remove firebase credentials from code?
