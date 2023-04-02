@@ -1,16 +1,12 @@
 import "./NewGoalButton.scss";
-import NewGoalForm from "../goalForm/NewGoalForm";
 import { useState } from "react";
+import GoalForm from "../goalForm/goalForm";
 
 function NewGoalButton() {
   const [showNewGoalForm, setShowNewGoalForm] = useState(false);
 
   function onAddGoalButtonClick() {
     setShowNewGoalForm(true);
-  }
-
-  function onCloseButtonClick() {
-    setShowNewGoalForm(false);
   }
 
   return (
@@ -20,7 +16,11 @@ function NewGoalButton() {
         onClick={onAddGoalButtonClick}>
         +
       </button>
-      {showNewGoalForm && <NewGoalForm onCloseProp={onCloseButtonClick} />}
+      {showNewGoalForm && (
+        <Modal onClose={() => setShowNewGoalForm(false)}>
+          <GoalForm mode={"newGoal"} goalTitle={goalTitle} goal={goalScore} />
+        </Modal>
+      )}
     </div>
   );
 }
