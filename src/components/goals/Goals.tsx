@@ -7,6 +7,7 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
 import ErrorLogger from "../errorLogger/ErrorLogger";
+import { ReactFragment } from "react";
 
 function Goals() {
   const currentUser = useAppSelector((state) => state.userReducer.user);
@@ -28,6 +29,24 @@ function Goals() {
       });
   }
 
+  let content:
+    | string
+    | number
+    | boolean
+    | ReactFragment
+    | JSX.Element
+    | JSX.Element[]
+    | null
+    | undefined;
+
+  if (isSuccess && goals.length > 0) {
+    content = goals.map((goal) => {
+      return <Goal key={goal.id} goal={goal} currentUser={currentUser} />;
+    });
+  } else if (isError) {
+    content = <ErrorLogger errorMessage={"Server error. Try again later :("} />;
+  }
+
   return (
     <div className="goals">
       <button
@@ -38,21 +57,7 @@ function Goals() {
       </button>
       <h1 className="goals__h1">Goals</h1>
       <NewGoalButton />
-      {isLoading && <div>Loading...</div>}
-      {isError && (
-        <ErrorLogger errorMessage={"Server error. Try again later :("} />
-      )}
-      {isSuccess && goals ? (
-        goals.map((goal) => {
-          return <Goal key={goal.id} goal={goal} currentUser={currentUser} />;
-        })
-      ) : (
-        <ErrorLogger
-          errorMessage={
-            "Oho! It appears you don't have any goals yet. Try add one :)"
-          }
-        />
-      )}
+      {content}
     </div>
   );
 }

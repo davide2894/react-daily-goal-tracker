@@ -6,6 +6,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/userSlice";
 import Goals from "../goals/Goals";
+import Loader from "../loader/Loader";
 
 function Home() {
   const [isUserLogged, setIsUserLogged] = useState<undefined | Boolean>(
@@ -36,22 +37,31 @@ function Home() {
     };
   }, []);
 
-  return (
-    <div className="home">
-      {typeof isUserLogged !== "undefined" ? (
-        isUserLogged ? (
-          <Goals />
-        ) : (
-          <div className="home__welcomeMessage">
-            <h1>WELCOME TO DAILY GOAL TRACKER</h1>
-            <MyAccount />
-          </div>
-        )
-      ) : (
-        <div>Loading...</div>
-      )}
-    </div>
-  );
+  let content:
+    | string
+    | number
+    | boolean
+    | JSX.Element
+    | React.ReactFragment
+    | null
+    | undefined;
+
+  if (typeof isUserLogged !== "undefined") {
+    if (isUserLogged) {
+      content = <Goals />;
+    } else {
+      content = (
+        <div className="home__welcomeMessage">
+          <h1>WELCOME TO DAILY GOAL TRACKER</h1>
+          <MyAccount />
+        </div>
+      );
+    }
+  } else {
+    content = <Loader />;
+  }
+
+  return <div className="home">{content}</div>;
 }
 
 export default Home;
