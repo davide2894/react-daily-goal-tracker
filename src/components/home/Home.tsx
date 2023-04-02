@@ -8,12 +8,15 @@ import { login } from "../../redux/slices/userSlice";
 import Goals from "../goals/Goals";
 
 function Home() {
-  const [isUserLogged, setIsUserLogged] = useState(false);
+  const [isUserLogged, setIsUserLogged] = useState<undefined | Boolean>(
+    undefined
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
+      console.log("onAuthStateChanged");
       if (user) {
         setIsUserLogged(true);
         dispatch(
@@ -27,17 +30,25 @@ function Home() {
         setIsUserLogged(false);
       }
     });
+
+    return () => {
+      console.log("onAuthStateChanged return fn");
+    };
   }, []);
 
   return (
     <div className="home">
-      {isUserLogged ? (
-        <Goals />
+      {typeof isUserLogged !== "undefined" ? (
+        isUserLogged ? (
+          <Goals />
+        ) : (
+          <div className="home__welcomeMessage">
+            <h1>WELCOME TO DAILY GOAL TRACKER</h1>
+            <MyAccount />
+          </div>
+        )
       ) : (
-        <div className="home__welcomeMessage">
-          <h1>WELCOME TO DAILY GOAL TRACKER</h1>
-          <MyAccount />
-        </div>
+        <div>Loading...</div>
       )}
     </div>
   );
