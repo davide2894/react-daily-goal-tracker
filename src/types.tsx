@@ -28,8 +28,7 @@ export interface Goal {
 }
 
 export interface FormProps {
-  goal?: Goal;
-  id?: number;
+  goalToEditId?: number;
   titleToEdit?: string;
   maxScoreToEdit?: string;
   mode?: string;

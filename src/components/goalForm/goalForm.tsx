@@ -30,7 +30,7 @@ function GoalForm(props: FormProps) {
         actual: 0,
       },
       isComplete: false,
-      id: props.id ? props.id : uuidv4(),
+      id: props.goalToEditId ? props.goalToEditId : uuidv4(),
     };
 
     if (props.mode) {

@@ -82,8 +82,7 @@ function Goal({ goal, currentUser }) {
           {showEditGoalForm && (
             <Modal mode="edit" onClose={() => setShowEditGoalForm(false)}>
               <GoalForm
-                goal={goal}
-                id={goal.id}
+                goalToEditId={goal.id}
                 titleToEdit={goal.title}
                 maxScoreToEdit={goal.score.max}
                 mode="edit"
