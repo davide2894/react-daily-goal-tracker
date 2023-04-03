@@ -2,7 +2,7 @@
 
 exports[`Register component matches its own snapshot 1`] = `
 <div
-  className="myAccount__form myAccount__form--register form"
+  className="myAccount__form myAccount__form--register formWrapper"
   data-testid="registerComponentTestElement"
 >
   <h2>
