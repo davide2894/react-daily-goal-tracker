@@ -21,7 +21,7 @@ function Login() {
   return (
     <div
       data-testid="loginComponentTest"
-      className="hi myAccount__form myAccount__form--login form">
+      className="hi myAccount__form myAccount__form--login formWrapper">
       <h2>Login if you have already an account</h2>
       <br></br>
       <form onSubmit={handleSubmit}>
