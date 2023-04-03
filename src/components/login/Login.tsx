@@ -47,7 +47,7 @@ function Login() {
           />
           <span className="separator"> </span>
         </div>
-        <div className="form-control">
+        <div className="form-control form-submitBtn">
           <button type="submit">Login</button>
         </div>
       </form>

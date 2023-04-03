@@ -1,5 +1,4 @@
 import "./Goal.scss";
-import EditGoalForm from "../editGoalForm/EditGoalForm";
 import { useState } from "react";
 import {
   useDecrementGoalScoreMutation,

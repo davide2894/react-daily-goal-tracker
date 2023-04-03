@@ -1,6 +1,11 @@
 @use "../../scss/core" as *;
 
 .home {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  margin-right: 25px;
+
   &__welcomeMessage {
     margin-bottom: $space55;
 
