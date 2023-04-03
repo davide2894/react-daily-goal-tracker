@@ -35,7 +35,7 @@ function Home() {
     return () => {
       console.log("onAuthStateChanged return fn");
     };
-  }, []);
+  }, [dispatch]);
 
   let content:
     | string
