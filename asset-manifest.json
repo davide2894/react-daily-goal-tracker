@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-daily-goal-tracker/static/css/main.68dcede8.css",
-    "main.js": "/react-daily-goal-tracker/static/js/main.04a9fc1a.js",
+    "main.js": "/react-daily-goal-tracker/static/js/main.ad8621ae.js",
     "static/js/988.61a68ed7.chunk.js": "/react-daily-goal-tracker/static/js/988.61a68ed7.chunk.js",
     "static/media/edit-button.svg": "/react-daily-goal-tracker/static/media/edit-button.e644fe2d8bc1f1239586.svg",
     "static/media/delete-button.svg": "/react-daily-goal-tracker/static/media/delete-button.d73a1f914187621b8e58.svg",
@@ -12,11 +12,11 @@
     "static/media/reset-button.svg": "/react-daily-goal-tracker/static/media/reset-button.b75a1c95ff0daf43eb41.svg",
     "static/media/close-button.svg": "/react-daily-goal-tracker/static/media/close-button.368f2a95fd29bbfa2440.svg",
     "main.68dcede8.css.map": "/react-daily-goal-tracker/static/css/main.68dcede8.css.map",
-    "main.04a9fc1a.js.map": "/react-daily-goal-tracker/static/js/main.04a9fc1a.js.map",
+    "main.ad8621ae.js.map": "/react-daily-goal-tracker/static/js/main.ad8621ae.js.map",
     "988.61a68ed7.chunk.js.map": "/react-daily-goal-tracker/static/js/988.61a68ed7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.68dcede8.css",
-    "static/js/main.04a9fc1a.js"
+    "static/js/main.ad8621ae.js"
   ]
 }
