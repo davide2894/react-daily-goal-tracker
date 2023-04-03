@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { loginWithEmailAndPassword } from "../../firebase";
 
 function Login() {
@@ -47,7 +47,7 @@ function Login() {
           />
           <span className="separator"> </span>
         </div>
-        <div className="form-control form-submitBtn">
+        <div className="form-control">
           <button type="submit">Login</button>
         </div>
       </form>
