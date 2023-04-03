@@ -2,7 +2,7 @@
 
 exports[`Login component matches its own snapshot 1`] = `
 <div
-  className="hi myAccount__form myAccount__form--login form"
+  className="hi myAccount__form myAccount__form--login formWrapper"
   data-testid="loginComponentTest"
 >
   <h2>
