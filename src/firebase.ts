@@ -48,7 +48,9 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       refreshToken: user.refreshToken,
     });
   } catch (err) {
-    console.error(err.message);
+    alert(
+      "There is an issue with the inserted email or password. Please try again"
+    );
   }
 };
 
