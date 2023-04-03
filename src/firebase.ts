@@ -60,7 +60,7 @@ const loginWithEmailAndPassword = async (email, password) => {
       console.log("user logged successfully");
     }
   } catch (err) {
-    console.error(err.message);
+    alert("There is an issue with your credentials. Please try again");
   }
 };
 
