@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# React Daily Goal Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This app let the user set weekly goals and keep track of them.
+It has a backend layer powered by Firestore used to store the user account alongised all the associated goals.
 
-In the project directory, you can run:
+## User journey
 
-### `npm start`
+The user has to register an account or login with one if it already exists.
+Once logged in, the user can start creating and editing weekly goals.
+If a page is refreshed or reloaded, the account is persisted, which means that the user session is kept, hence the account keeps being logged in.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The user can decide to logout at any time.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## What I learned and technologies used
 
-### `npm test`
+I wanted to use this project as a learning experience to practice and build things with React while learning modern practices involved with it.
+In fact, I wanted to learn:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React v18 to learn and use the power of functional components
+- Global state management by using a state container. I opted for Redux Toolkit because it's easier than going directly with Redux, considering it has way less boilerplate code involved and the exposed API makes the coding experience much enjoyable
+- how to setup a backend for user authentication. I opted for Firebase as a backend layer and Firestore as a database system
+- how to get data from backend and manage this data in the global state. For this I combined Firestore with Redux Tooklkit and RTK Query
+- I wanted to also learn TypeScript since it's modern, typed, safer and less bug prone than plain Javascript
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- NodeJS >= 10
+- Chrome (or any Chromium based browser, like the new Edge)/Firefox/Safari
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installing
 
-### `npm run eject`
+Run 'npm i'
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Executing program
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Run in dev mode (with file watch): 'npm start'
+- Run in production mode - it generates a single build: 'npm run build'
+- Launch tests: 'npm run test'
