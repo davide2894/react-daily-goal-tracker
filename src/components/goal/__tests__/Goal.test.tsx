@@ -40,5 +40,5 @@ test("If goal prop has goal.isComplete field value, then Goal component should h
   renderWithProviders(<Goal goal={conpletedGoal} currentUser={currentUser} />);
   const goalComponentWrapper = screen.getByTestId("goalTest");
   expect(goalComponentWrapper).toBeInTheDocument();
-  expect(goalComponentWrapper).toHaveClass("goal--completed");
+  expect(goalComponentWrapper).toHaveClass("goal--isComplete");
 });
