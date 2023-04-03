@@ -1,5 +1,9 @@
 # React Daily Goal Tracker
 
+## Live demo
+
+https://davide2894.github.io/react-daily-goal-tracker/
+
 ## Description
 
 This app let the user set weekly goals and keep track of them.
