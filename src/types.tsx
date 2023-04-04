@@ -1,9 +1,3 @@
-import { SetStateAction } from "react";
-
-export interface User {
-  user?: object;
-}
-
 export interface LoginUserData {
   email: string;
   uid: string;
@@ -24,7 +18,7 @@ export interface Goal {
     actual: number;
   };
   isComplete: boolean;
-  id: any;
+  id: string;
 }
 
 export interface FormProps {
