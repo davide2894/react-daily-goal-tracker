@@ -7,7 +7,7 @@ import {
   useResetGoalMutation,
 } from "../../redux/slices/goalsApi";
 import Modal from "../modal/Modal";
-import GoalForm from "../goalForm/goalForm";
+import GoalForm from "../goalForm/GoalForm";
 
 function Goal({ goal, currentUser }) {
   const [showEditGoalForm, setShowEditGoalForm] = useState(false);
