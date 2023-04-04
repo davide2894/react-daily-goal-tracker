@@ -2,16 +2,18 @@ import { useEffect } from "react";
 import "./Modal.scss";
 
 function Modal(props) {
+  const { mode, onClose } = props;
+
   useEffect(() => {
     function handleEscapeKey(event: KeyboardEvent) {
       if (event.code === "Escape") {
-        props.onClose();
+        onClose();
         console.log("escape pressed");
       }
     }
     document.addEventListener("keydown", handleEscapeKey);
     return () => document.removeEventListener("keydown", handleEscapeKey);
-  });
+  }, [onClose]);
 
   function onCloseClick() {
     props.onClose();
@@ -39,7 +41,7 @@ function Modal(props) {
         }}>
         <div className="modalOverlay__content form">
           <h2 className="modalOverlay__h2">
-            {props.mode === "add" ? "Add Goal" : "Edit Goal"}
+            {mode === "add" ? "Add Goal" : "Edit Goal"}
           </h2>
           {props.children}
         </div>
