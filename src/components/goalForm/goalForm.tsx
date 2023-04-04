@@ -6,6 +6,7 @@ import {
 import { useAppSelector } from "../../redux/store";
 import { v4 as uuidv4 } from "uuid";
 import { Goal, FormProps } from "../../types";
+import "./GoalForm.scss";
 
 function GoalForm(props: FormProps) {
   const [goalTitle, setGoalTitle] = useState(
@@ -48,8 +49,8 @@ function GoalForm(props: FormProps) {
 
   return (
     <form onSubmit={(evt) => onFormSubmit(evt)}>
-      <div className="editGoalForm__name">
-        <label htmlFor="nameInput">
+      <div className="goalForm__name">
+        <label htmlFor="nameInput" className="goalForm__nameLabel">
           Goal title:
           <input
             type="text"
@@ -62,7 +63,7 @@ function GoalForm(props: FormProps) {
           />
         </label>
       </div>
-      <div className="editGoalForm__score">
+      <div className="goalForm__score">
         <label htmlFor="scoreInput">
           times to meet per week
           <input

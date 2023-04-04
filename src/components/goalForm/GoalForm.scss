@@ -1,0 +1,7 @@
+@use "../../scss/core/" as *;
+
+.goalForm {
+  &__nameLabel {
+    font-size: rem(18px);
+  }
+}
