@@ -1,4 +1,4 @@
-@use "../core/" as *;
+@use "../../scss/core/" as *;
 
 .modalOverlay {
   position: absolute;
@@ -60,5 +60,10 @@
 
   &__form {
     color: black;
+  }
+
+  &__h2 {
+    font-size: rem($space25);
+    margin-bottom: $space16;
   }
 }
