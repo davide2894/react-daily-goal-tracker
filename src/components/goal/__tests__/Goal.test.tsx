@@ -1,6 +1,6 @@
 import Goal from "../Goal";
 import { cleanup, screen } from "@testing-library/react";
-import { renderWithProviders } from "../../../../utils/testUtils";
+import { renderWithProviders } from "../../../utils/testUtils";
 
 afterEach(() => {
   cleanup();

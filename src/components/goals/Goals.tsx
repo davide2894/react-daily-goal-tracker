@@ -7,12 +7,16 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import ErrorLogger from "../errorLogger/ErrorLogger";
 import { ReactFragment } from "react";
+import useSyncFirestoreDb from "../../utils/UseSyncFirestoreDB";
 
 function Goals() {
   const currentUser = useAppSelector((state) => state.userReducer.user);
+
+  //@TODO: fetch from firebase all the goals associated to the logged user
   const goals = useAppSelector((state) => state.goalReducer.goals);
   const navigate = useNavigate();
-
+  const syncFireBaseDb = useSyncFirestoreDb(goals);
+  const x = "";
   function handleSignOut() {
     signOut(auth)
       .then(() => {

@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
-import goalFormReducer from "../src/redux/slices/goalFormSlice";
-import userReducer from "../src/redux/slices/userSlice";
-import { firestoreApi } from "../src/redux/slices/goalsApi";
+import goalFormReducer from "../redux/slices/goalFormSlice";
+import userReducer from "../redux/slices/userSlice";
+import { firestoreApi } from "../redux/slices/goalsApi";
 import { Provider } from "react-redux";
 
 //sources:
