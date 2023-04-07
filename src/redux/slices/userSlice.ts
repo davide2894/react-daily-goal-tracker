@@ -21,5 +21,4 @@ export const { login, logout } = userSlice.actions;
 // selectors
 export const selectUser = (state) => state.user.user;
 //   const posts = useSelector((state) => state.posts);
-
 export default userSlice.reducer;

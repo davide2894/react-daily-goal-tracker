@@ -247,10 +247,39 @@ Warning: A component is changing a controlled input to be uncontrolled. This is 
     When it lands, if user is logged, it should go directly to the goals page.
     Maybe see if it's possible to insert a loader or something like this?
 
-# [] publish
+# [x] publish
 
-    [] write a good readme (wh)
-    [] publish app with gh-pages (quizzical on gh)
-    [] test it live on android
-    [] test it live on ios
-    [] remove firebase credentials from code?
+    [x] write a good readme (wh)
+    [x] publish app with gh-pages (quizzical on gh)
+    [x] test it live on android
+    [x] test it live on ios
+    [x] remove firebase credentials from code?
+
+# fix post review
+
+    [x] ts
+        [x] id di goal: any --> mettere string
+        [x] interfaccia user che contiene user è ridondante
+        [x] eviterei di usare object, poco generico, poco stretto, is on par with any. usa Record che accetta due generici
+            Record<string, number> or something like this
+    [x] useEffect in modal.tsx -> insert props.onClose() in useEffect dependency array
+        - es. destructure di props.onClose()
+        - stabilizzare onClose() perché altrimenti useEffect runna all'infinito
+    [] bug: split counter update between frontend and backend
+        [] frontend
+            [] increase
+            [] decrease
+            [] reset
+        [] backend
+            [] increase
+            [] decrease
+            [] reset
+
+# todo quizzical
+
+---
+
+[] useMemo -> usalo dentro il progetto del quizzical
+
+[] 1. rimetter goalSlice
+[] 2. crea customhook -

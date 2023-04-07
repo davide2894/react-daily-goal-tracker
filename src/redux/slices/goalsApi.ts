@@ -16,7 +16,6 @@ const mapGoal = (goalObjectFromFirestore): Goal => {
   return {
     title: goalObjectFromFirestore.title,
     score: goalObjectFromFirestore.score,
-    isComplete: goalObjectFromFirestore.isComplete,
     id: goalObjectFromFirestore.id,
   };
 };
@@ -78,11 +77,11 @@ export const firestoreApi = createApi({
       invalidatesTags: ["Goals"],
     }),
     incrementGoalScore: builder.mutation({
-      async queryFn({ goalId, max, actual, currentUser }) {
+      async queryFn({ goalId, max, actual, currentUserDocId }) {
         try {
           const docRef = doc(
             db,
-            `/users/${currentUser.userDocId}/user-goals/`,
+            `/users/${currentUserDocId}/user-goals/`,
             goalId
           );
           await updateDoc(docRef, {

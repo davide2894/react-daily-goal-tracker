@@ -17,7 +17,6 @@ export interface Goal {
     min: number;
     actual: number;
   };
-  isComplete: boolean;
   id: string;
 }
 

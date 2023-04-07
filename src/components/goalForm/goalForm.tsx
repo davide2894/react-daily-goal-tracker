@@ -1,9 +1,6 @@
 import { useState } from "react";
-import {
-  useAddGoalMutation,
-  useEditGoalMutation,
-} from "../../redux/slices/goalsApi";
-import { useAppSelector } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { addGoal, updateGoal } from "../../redux/slices/goalSlice";
 import { v4 as uuidv4 } from "uuid";
 import { Goal, FormProps } from "../../types";
 import "./GoalForm.scss";
@@ -16,9 +13,7 @@ function GoalForm(props: FormProps) {
     props.maxScoreToEdit ? props.maxScoreToEdit : ""
   );
 
-  const [addGoal] = useAddGoalMutation();
-  const [editGoal] = useEditGoalMutation();
-  const currentUser = useAppSelector((state) => state.userReducer.user);
+  const dispatch = useDispatch();
 
   function onFormSubmit(evt) {
     evt.preventDefault();
@@ -30,15 +25,14 @@ function GoalForm(props: FormProps) {
         min: 0,
         actual: 0,
       },
-      isComplete: false,
       id: props.goalToEditId ? props.goalToEditId : uuidv4(),
     };
 
     if (props.mode) {
       if (props.mode === "add") {
-        addGoal({ goal, currentUser });
+        dispatch(addGoal(goal));
       } else if (props.mode === "edit") {
-        editGoal({ goal, currentUser });
+        dispatch(updateGoal(goal));
       }
     }
 

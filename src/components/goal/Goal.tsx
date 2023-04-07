@@ -1,23 +1,22 @@
 import "./Goal.scss";
-import { useState } from "react";
-import {
-  useDecrementGoalScoreMutation,
-  useDeleteGoalMutation,
-  useIncrementGoalScoreMutation,
-  useResetGoalMutation,
-} from "../../redux/slices/goalsApi";
 import Modal from "../modal/Modal";
 import GoalForm from "../goalForm/GoalForm";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  decrementScore,
+  deleteGoal,
+  resetGoal,
+  incrementScore,
+} from "../../redux/slices/goalSlice";
 
 function Goal({ goal, currentUser }) {
   const [showEditGoalForm, setShowEditGoalForm] = useState(false);
+  const isComplete = goal.score.actual === goal.score.max;
   const goalWrapperClasses = `goal ${
-    goal && goal.isComplete ? "goal--isComplete" : ""
+    goal && isComplete ? "goal--isComplete" : ""
   }`;
-  const [setDecrementGoalScore] = useDecrementGoalScoreMutation();
-  const [setIncrementGoalScore] = useIncrementGoalScoreMutation();
-  const [deleteGoal] = useDeleteGoalMutation();
-  const [resetGoal] = useResetGoalMutation();
+  const dispatch = useDispatch();
 
   function onEditFormOpenHandler() {
     setShowEditGoalForm(true);
@@ -36,24 +35,15 @@ function Goal({ goal, currentUser }) {
           <button
             title="decrease score by 1"
             className="score__button score__button--decrease"
-            onClick={() =>
-              setDecrementGoalScore({ goalId: goal.id, currentUser })
-            }
-            disabled={goal.score.actual === goal.score.min || goal.isComplete}>
+            onClick={() => dispatch(decrementScore(goal))}
+            disabled={goal.score.actual === goal.score.min || isComplete}>
             <span className="icon score__buttonIcon score__buttonIcon--decreaseScore"></span>
           </button>
           <button
             title="increase score by 1"
             className="score__button score__button--increase"
-            onClick={() =>
-              setIncrementGoalScore({
-                goalId: goal.id,
-                max: goal.score.max,
-                actual: goal.score.actual,
-                currentUser,
-              })
-            }
-            disabled={goal.score.actual === goal.score.max || goal.isComplete}>
+            onClick={() => dispatch(incrementScore(goal))}
+            disabled={goal.score.actual === goal.score.max || isComplete}>
             <span className="icon score__buttonIcon score__buttonIcon--increaseScore"></span>
           </button>
         </div>
@@ -61,21 +51,21 @@ function Goal({ goal, currentUser }) {
           <button
             title="edit goal"
             className="score__button score__button--edit"
-            disabled={goal.isComplete}
+            disabled={isComplete}
             onClick={onEditFormOpenHandler}>
             <span className="icon score__buttonIcon score__buttonIcon--edit"></span>
           </button>
           <button
             title="delete goal"
             className="score__button score__button--delete"
-            onClick={() => deleteGoal({ goalId: goal.id, currentUser })}>
+            onClick={() => dispatch(deleteGoal(goal))}>
             <span className="icon score__buttonIcon score__buttonIcon--delete"></span>
           </button>
           <button
             title="reset goal score"
             className="score__button score__button--reset"
             disabled={goal.score.actual === 0}
-            onClick={() => resetGoal({ goalId: goal.id, currentUser })}>
+            onClick={() => dispatch(resetGoal(goal))}>
             <span className="icon score__buttonIcon score__buttonIcon--reset"></span>
           </button>
           {showEditGoalForm && (

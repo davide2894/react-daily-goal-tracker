@@ -5,19 +5,13 @@ import { useAppSelector } from "../../redux/store";
 import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
 import ErrorLogger from "../errorLogger/ErrorLogger";
 import { ReactFragment } from "react";
 
 function Goals() {
   const currentUser = useAppSelector((state) => state.userReducer.user);
+  const goals = useAppSelector((state) => state.goalReducer.goals);
   const navigate = useNavigate();
-  const {
-    data: goals,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useFetchGoalsQuery(currentUser);
 
   function handleSignOut() {
     signOut(auth)
@@ -39,12 +33,18 @@ function Goals() {
     | null
     | undefined;
 
-  if (isSuccess && goals.length > 0) {
+  if (goals.length > 0) {
     content = goals.map((goal) => {
       return <Goal key={goal.id} goal={goal} currentUser={currentUser} />;
     });
-  } else if (isError) {
-    content = <ErrorLogger errorMessage={"Server error. Try again later :("} />;
+  } else {
+    content = (
+      <ErrorLogger
+        errorMessage={
+          "It seems there is an issue. Please try to reload the page"
+        }
+      />
+    );
   }
 
   return (
