@@ -36,6 +36,16 @@ const getDifference = (arr1: Array<Goal>, arr2: Array<Goal>) => {
    * - what about goal deleted? what do I expect to find?
    *
    */
+  let goalToReturn: Goal = {
+    id: "",
+    title: "",
+    score: {
+      min: 0,
+      max: 0,
+      actual: 0,
+    },
+  };
+  let typeOfDifference: string = "";
 
   if (arr1.length > arr2.length) {
     console.log("a goal was added");
@@ -43,6 +53,8 @@ const getDifference = (arr1: Array<Goal>, arr2: Array<Goal>) => {
     const newGoal = arr1.filter(
       (arr1Goal) => !arr2.some((goal) => goal.id === arr1Goal.id)
     );
+    goalToReturn = newGoal[0];
+    typeOfDifference = "new goal";
     // push this goal to firebase
   } else if (arr1.length < arr2.length) {
     // find in arr1 the goal which is not in array 2
@@ -50,9 +62,12 @@ const getDifference = (arr1: Array<Goal>, arr2: Array<Goal>) => {
     const deletedGoal = arr2.filter(
       (arr2Goal) => !arr1.some((goal) => goal.id === arr2Goal.id)
     );
+    goalToReturn = deletedGoal[0];
+    typeOfDifference = "deleted";
     // push this goal to firebase
   } else {
-    arr1.forEach((goal) => {
+    for (let i = 0; i < arr1.length; i++) {
+      const goal = arr1[i];
       const existingGoal = arr2.find((arr2goal) => arr2goal.id === goal.id);
       if (existingGoal) {
         console.log({
@@ -66,26 +81,15 @@ const getDifference = (arr1: Array<Goal>, arr2: Array<Goal>) => {
             existingGoal,
             goal,
           });
-          return;
-        } else {
-          console.log({
-            "compare-result": "equal",
-            existingGoal,
-            goal,
-          });
-          return;
+          goalToReturn = goal;
+          typeOfDifference = "update";
+          break;
         }
-      } else {
-        console.log({
-          msg: "this goal does not appear in the previous goals",
-          goal,
-        });
-        return;
-        // new goal does not exist in old array of goals
-        // which means this is either a new goal or a delete goal
       }
-    });
     }
+  }
+
+  return { goalToReturn, typeOfDifference };
 };
 
 export default getDifference;
