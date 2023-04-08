@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import ErrorLogger from "../errorLogger/ErrorLogger";
 import { ReactFragment } from "react";
 import useSyncFirestoreDb from "../../utils/UseSyncFirestoreDB";
+import { useDebounce } from "use-debounce";
 
 function Goals() {
   const currentUser = useAppSelector((state) => state.userReducer.user);
@@ -15,8 +16,9 @@ function Goals() {
   //@TODO: fetch from firebase all the goals associated to the logged user
   const goals = useAppSelector((state) => state.goalReducer.goals);
   const navigate = useNavigate();
-  const syncFireBaseDb = useSyncFirestoreDb(goals);
-  const x = "";
+  const debouncedGoals = useDebounce(goals, 500);
+  useSyncFirestoreDb(debouncedGoals[0]);
+
   function handleSignOut() {
     signOut(auth)
       .then(() => {

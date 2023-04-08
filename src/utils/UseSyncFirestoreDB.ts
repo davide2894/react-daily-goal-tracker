@@ -28,7 +28,7 @@ const updateFirestoreDoc = async (userDocId, goal, type) => {
   }
 };
 
-const useSyncFirestoreDb = (goals: Array<Goal>) => {
+const useSyncFirestoreDb = (goals) => {
   const previousGoals = usePrevious(goals);
   const user = useAppSelector((state) => state.userReducer.user);
   const userDocId = user.userDocId;
