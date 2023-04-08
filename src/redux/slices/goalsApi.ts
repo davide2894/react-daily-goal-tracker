@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Goal } from "../../types";
+import { useDispatch } from "react-redux";
 
 const mapGoal = (goalObjectFromFirestore): Goal => {
   return {
@@ -27,14 +28,14 @@ export const firestoreApi = createApi({
     fetchGoals: builder.query({
       async queryFn(user) {
         try {
-          let goals: Array<Goal> = [];
+          let goalsFromDB: Array<Goal> = [];
           const querySnapshot = await getDocs(
             collection(db, `/users/${user.userDocId}/user-goals/`)
           );
           querySnapshot.forEach((doc) => {
-            goals.push(mapGoal(doc.data()));
+            goalsFromDB.push(mapGoal(doc.data()));
           });
-          return { data: goals };
+          return { data: goalsFromDB };
         } catch (error) {
           console.error(error.message);
           return { error: error.message };

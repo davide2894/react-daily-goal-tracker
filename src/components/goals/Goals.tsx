@@ -6,15 +6,30 @@ import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import ErrorLogger from "../errorLogger/ErrorLogger";
-import { ReactFragment } from "react";
+import { ReactFragment, useEffect } from "react";
 import useSyncFirestoreDb from "../../utils/UseSyncFirestoreDB";
 import { useDebounce } from "use-debounce";
+import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
+import { syncWithBackend } from "../../redux/slices/goalSlice";
+import { useDispatch } from "react-redux";
 
 function Goals() {
+  console.log("Goals component rendered");
+  const dispatch = useDispatch();
   const currentUser = useAppSelector((state) => state.userReducer.user);
-
-  //@TODO: fetch from firebase all the goals associated to the logged user
   const goals = useAppSelector((state) => state.goalReducer.goals);
+  //@TODO:
+  // - check: if goals from firestore -> fetch them
+  // - sync with local state
+  // - use local state
+  // - sync backend every 500 ms if action is detected
+  const {
+    data: goalsFromDB,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useFetchGoalsQuery(currentUser);
+
   const navigate = useNavigate();
   const debouncedGoals = useDebounce(goals, 500);
   useSyncFirestoreDb(debouncedGoals[0]);
@@ -39,7 +54,18 @@ function Goals() {
     | null
     | undefined;
 
-  if (goals.length > 0) {
+  useEffect(() => {
+    dispatch(syncWithBackend(goalsFromDB));
+    return () => {};
+  }, [dispatch, goalsFromDB]);
+
+  if (
+    isSuccess &&
+    goalsFromDB &&
+    goalsFromDB.length > 0 &&
+    goals &&
+    goals.length
+  ) {
     content = goals.map((goal) => {
       return <Goal key={goal.id} goal={goal} currentUser={currentUser} />;
     });
