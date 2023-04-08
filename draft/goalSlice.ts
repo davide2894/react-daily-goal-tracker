@@ -9,7 +9,6 @@ const initialState = {
         min: 0,
         actual: 0,
       },
-      isComplete: false,
       id: "first",
     },
     {
@@ -19,7 +18,6 @@ const initialState = {
         min: 0,
         actual: 1,
       },
-      isComplete: false,
       id: "second",
     },
   ],
