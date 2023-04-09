@@ -46,12 +46,4 @@ export const firestoreApi = createApi({
   }),
 });
 
-export const {
-  useFetchGoalsQuery,
-  useAddGoalMutation,
-  useEditGoalMutation,
-  useDecrementGoalScoreMutation,
-  useIncrementGoalScoreMutation,
-  useDeleteGoalMutation,
-  useResetGoalMutation,
-} = firestoreApi;
+export const { useFetchGoalsQuery } = firestoreApi;

@@ -12,6 +12,7 @@ import useSyncFirestoreDb from "../../utils/UseSyncFirestoreDB";
 import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
 import { useDispatch } from "react-redux";
 import { syncWithBackend } from "../../redux/slices/goalSlice";
+import Loader from "../loader/Loader";
 
 function Goals() {
   console.log("Goals component rendered");
@@ -20,7 +21,12 @@ function Goals() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { data: goalsFromDB, isSuccess } = useFetchGoalsQuery(currentUser);
+  const {
+    data: goalsFromDB,
+    isSuccess,
+    isLoading,
+    isError,
+  } = useFetchGoalsQuery(currentUser);
 
   const debouncedGoals = useDebounce(goals, 350, { trailing: true });
   useSyncFirestoreDb(debouncedGoals[0], currentUser.userDocId);
@@ -59,7 +65,9 @@ function Goals() {
     content = goals.map((goal) => {
       return <Goal key={goal.id} goal={goal} currentUser={currentUser} />;
     });
-  } else {
+  } else if (isLoading) {
+    content = <Loader />;
+  } else if (isError) {
     content = (
       <ErrorLogger
         errorMessage={
@@ -68,7 +76,6 @@ function Goals() {
       />
     );
   }
-
   return (
     <div className="goals">
       <button

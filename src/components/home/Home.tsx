@@ -57,10 +57,7 @@ function Home() {
         </div>
       );
     }
-  } else {
-    content = <Loader />;
   }
-
   return <div className="home">{content}</div>;
 }
 
