@@ -49,6 +49,7 @@ function GoalForm(props: FormProps) {
           <input
             type="text"
             name="name"
+            required
             id="nameInput"
             value={goalTitle}
             onChange={(evt) => {
@@ -62,7 +63,9 @@ function GoalForm(props: FormProps) {
           times to meet per week
           <input
             type="number"
+            required
             name="score"
+            min="0"
             id="scoreInput"
             value={goalScore}
             onChange={(evt) => {
