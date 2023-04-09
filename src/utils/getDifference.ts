@@ -2,40 +2,6 @@ import { Goal } from "../types";
 import isEqual from "lodash.isequal";
 
 const getDifference = (arr1: Array<Goal>, arr2: Array<Goal>) => {
-  /*
-   *
-   * basically: whatever update happens,
-   * only one goal at a time can be updated,
-   * so there will be just one goal which will be updated
-   * this update will be triggered by
-   * - add goal -> array 2 will have a new object. so array.find or array.some will return false
-   * - edit goal -> find object with same id but with .isEqual returns false
-   *   - title
-   *   - score.max
-   * - delete goal
-   *    -> goal from previousGoals
-   *        -> I won't find the deleted goal in new goals array
-   * - increase score -> find object with same id but with .isEqual returns false
-   * - decrease score -> find object with same id but with .isEqual returns false
-   * - reset score -> find object with same id but with .isEqual returns false
-   *
-   * find difference
-   * - compare newGoals VS previousGoals
-   * - loop through newGoals
-   * -  for each newGoal
-   * -  try to find newGoal among the previousGoals by trying to match the id (array.find)
-   * - if find
-   *    - possible changes are:
-   *        - increased score
-   *        - decreased score
-   *        - reset score
-   *    - are they equal?
-   *      - if yes -> skip
-   *      - if not -> push to difference
-   * - if not find it means this newGoal not an updated but an actual addition
-   * - what about goal deleted? what do I expect to find?
-   *
-   */
   let goalToReturn: Goal = {
     id: "",
     title: "",
