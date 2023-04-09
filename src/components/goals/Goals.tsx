@@ -28,7 +28,7 @@ function Goals() {
     isError,
   } = useFetchGoalsQuery(currentUser);
 
-  const debouncedGoals = useDebounce(goals, 350, { trailing: true });
+  const debouncedGoals = useDebounce(goals, 200, { trailing: true });
   useSyncFirestoreDb(debouncedGoals[0], currentUser.userDocId);
 
   function handleSignOut() {
