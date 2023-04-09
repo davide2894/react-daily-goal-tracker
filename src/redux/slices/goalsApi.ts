@@ -8,6 +8,8 @@ import {
   setDoc,
   increment,
   deleteDoc,
+  orderBy,
+  query,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Goal } from "../../types";
@@ -29,8 +31,12 @@ export const firestoreApi = createApi({
         try {
           console.log("goals api - fetching goals from DB");
           let goalsFromDB: Array<Goal> = [];
+          const goalsCollectionRef = collection(
+            db,
+            `/users/${user.userDocId}/user-goals/`
+          );
           const querySnapshot = await getDocs(
-            collection(db, `/users/${user.userDocId}/user-goals/`)
+            query(goalsCollectionRef, orderBy("title", "asc"))
           );
           querySnapshot.forEach((doc) => {
             goalsFromDB.push(mapGoal(doc.data()));
