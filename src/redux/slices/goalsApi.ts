@@ -11,7 +11,6 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Goal } from "../../types";
-import { useDispatch } from "react-redux";
 
 const mapGoal = (goalObjectFromFirestore): Goal => {
   return {
@@ -28,6 +27,7 @@ export const firestoreApi = createApi({
     fetchGoals: builder.query({
       async queryFn(user) {
         try {
+          console.log("goals api - fetching goals from DB");
           let goalsFromDB: Array<Goal> = [];
           const querySnapshot = await getDocs(
             collection(db, `/users/${user.userDocId}/user-goals/`)
@@ -121,11 +121,9 @@ export const firestoreApi = createApi({
       invalidatesTags: ["Goals"],
     }),
     deleteGoal: builder.mutation({
-      async queryFn({ goalId, currentUser }) {
+      async queryFn({ goalId, userDocId }) {
         try {
-          await deleteDoc(
-            doc(db, `/users/${currentUser.userDocId}/user-goals/`, goalId)
-          );
+          await deleteDoc(doc(db, `/users/${userDocId}/user-goals/`, goalId));
           return { data: "ok" };
         } catch (err) {
           return { error: err };

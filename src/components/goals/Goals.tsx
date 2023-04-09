@@ -7,32 +7,23 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import ErrorLogger from "../errorLogger/ErrorLogger";
 import { ReactFragment, useEffect } from "react";
-import useSyncFirestoreDb from "../../utils/UseSyncFirestoreDB";
 import { useDebounce } from "use-debounce";
+import useSyncFirestoreDb from "../../utils/UseSyncFirestoreDB";
 import { useFetchGoalsQuery } from "../../redux/slices/goalsApi";
-import { syncWithBackend } from "../../redux/slices/goalSlice";
 import { useDispatch } from "react-redux";
+import { syncWithBackend } from "../../redux/slices/goalSlice";
 
 function Goals() {
   console.log("Goals component rendered");
-  const dispatch = useDispatch();
   const currentUser = useAppSelector((state) => state.userReducer.user);
   const goals = useAppSelector((state) => state.goalReducer.goals);
-  //@TODO:
-  // - check: if goals from firestore -> fetch them
-  // - sync with local state
-  // - use local state
-  // - sync backend every 500 ms if action is detected
-  const {
-    data: goalsFromDB,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useFetchGoalsQuery(currentUser);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const debouncedGoals = useDebounce(goals, 500);
-  useSyncFirestoreDb(debouncedGoals[0]);
+
+  const { data: goalsFromDB, isSuccess } = useFetchGoalsQuery(currentUser);
+
+  const debouncedGoals = useDebounce(goals, 350, { trailing: true });
+  useSyncFirestoreDb(debouncedGoals[0], currentUser.userDocId);
 
   function handleSignOut() {
     signOut(auth)
@@ -55,17 +46,16 @@ function Goals() {
     | undefined;
 
   useEffect(() => {
+    console.log("Goals -> useEffect to sync backend to local state");
     dispatch(syncWithBackend(goalsFromDB));
-    return () => {};
+    return () => {
+      console.log(
+        "cleaning up Goals -> useEffect to sync backend to local state"
+      );
+    };
   }, [dispatch, goalsFromDB]);
 
-  if (
-    isSuccess &&
-    goalsFromDB &&
-    goalsFromDB.length > 0 &&
-    goals &&
-    goals.length
-  ) {
+  if (isSuccess && goalsFromDB && goalsFromDB.length && goals && goals.length) {
     content = goals.map((goal) => {
       return <Goal key={goal.id} goal={goal} currentUser={currentUser} />;
     });
