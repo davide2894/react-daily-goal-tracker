@@ -1,16 +1,6 @@
 // src/features/scores/scoresSlice.ts
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import {
-  collection,
-  doc,
-  updateDoc,
-  getDocs,
-  setDoc,
-  increment,
-  deleteDoc,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Goal } from "../../types";
 

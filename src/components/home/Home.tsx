@@ -6,7 +6,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/userSlice";
 import Goals from "../goals/Goals";
-import Loader from "../loader/Loader";
 
 function Home() {
   const [isUserLogged, setIsUserLogged] = useState<undefined | Boolean>(
